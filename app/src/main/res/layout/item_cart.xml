@@ -12,12 +12,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
+            android:id="@+id/cart_medicine_name_id"
             android:layout_marginTop="8dp"
             android:text="KETO AZ HAIR LOSS LOTION"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
 
         <ImageView
             android:layout_width="wrap_content"
+            android:id="@+id/delete_cart_element"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -37,20 +39,35 @@
         android:layout_below="@id/companyName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/quantity"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="QTY"
-            android:layout_margin="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large">
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
-        </TextView>
-        <Spinner
+            <Button
+                android:id="@+id/quantitydecrease"
+                android:layout_width="64dp"
+                android:layout_height="32dp"
+                android:textAlignment="center"
+                android:layout_margin="16dp"
+                android:text="-">
+
+            </Button>
+        <TextView
             android:layout_width="wrap_content"
+            android:id="@+id/quantity_medicine_in_cart"
             android:layout_toRightOf="@id/quantity"
+            android:textAlignment="center"
             android:layout_centerVertical="true"
-            android:layout_height="wrap_content"></Spinner>
+            android:layout_height="wrap_content"></TextView>
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="32dp"
+            android:id="@+id/quantity_increase"
+            android:textAlignment="center"
+            android:layout_margin="16dp"
+            android:text="+"></Button></LinearLayout>
         <TextView
             android:layout_alignParentEnd="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"

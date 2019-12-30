@@ -31,6 +31,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Adapter;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.alonemusk.medicalapp.AfterSearch;
 import com.alonemusk.medicalapp.MainActivity;
@@ -75,6 +76,8 @@ public class Search extends Fragment implements SearchAdapter.MedicineClicked {
 
 
         return v;
+
+
     }
 
 
@@ -96,7 +99,10 @@ public class Search extends Fragment implements SearchAdapter.MedicineClicked {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+              // Toast.makeText(getActivity(), "failed", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "in funtion "+e);
                 e.printStackTrace();
+
             }
 
             @Override
@@ -110,21 +116,22 @@ public class Search extends Fragment implements SearchAdapter.MedicineClicked {
                             Gson gson = new Gson();
 
                             ArrayList<JSONObject>jsonObjects= JsonParsing.parsejson(myResponse);
-
-
+                          mViewModel.deleteAll();
                             for(JSONObject obj:jsonObjects){
                                 SearchMedicine object = gson.fromJson(String.valueOf(obj), SearchMedicine.class);
+
                                 mViewModel.Insert(object);
-                                ;
+
 
                             }
+                            Log.d(TAG, "in funtion ");
                         }
                     });
                 }
 
             }
         });
-        mViewModel.getAllnote().observe(this, new Observer<List<SearchMedicine>>() {
+                      mViewModel.getAllnote().observe(this, new Observer<List<SearchMedicine>>() {
             @Override
             public void onChanged(List<SearchMedicine> notes) {
                 searchAdapter.setNotes(notes);
@@ -180,9 +187,10 @@ public class Search extends Fragment implements SearchAdapter.MedicineClicked {
     @Override
     public void medicineClicked(int position) {
         final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        navController.navigate(R.id.action_navigation_search_to_navigation_after_search);
-
-
+        Bundle bundle=new Bundle();
+        bundle.putInt("medicine_id",searchMedicines.get(position).getMedicine_id());
+        bundle.putInt("user_id",10001);
+        navController.navigate(R.id.action_navigation_search_to_navigation_after_search,bundle);
 
     }
 }

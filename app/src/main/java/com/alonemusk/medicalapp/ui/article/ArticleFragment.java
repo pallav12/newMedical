@@ -48,6 +48,10 @@ public class ArticleFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(ArticleViewModel.class);
         // TODO: Use the ViewModel
+
+
+
+
     }
 
 }

@@ -31,10 +31,12 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     annotationProcessor "androidx.room:room-compiler:$room_version"
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-
+    //  implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     // For Kotlin use kapt instead of annotationProcessor
-
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'

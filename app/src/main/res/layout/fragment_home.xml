@@ -30,6 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:id="@+id/gotocarthomeicon"
                 android:layout_centerInParent="true"
                 android:layout_marginRight="16dp"
                 android:src="@drawable/ic_shopping_cart_black_24dp"></ImageView>
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/deliverto"
                 android:text="221105 varanasi"
+
                 android:textSize="15dp"></TextView>
 </RelativeLayout>
 
@@ -85,10 +87,11 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="110dp"
+
                 android:layout_centerInParent="true"
                 android:layout_height="110dp"
                 android:layout_weight="1"
-
+android:id="@+id/home_card1"
                 card:cardCornerRadius="55dp">
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -101,7 +104,7 @@
                         android:layout_marginTop="30dp"
 
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/medical"></ImageView>
+                        android:src="@drawable/ic_add_circle_outline_black_24dp"></ImageView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -109,7 +112,7 @@
                         android:maxLines="2"
                         android:textColor="#000"
                         android:layout_centerHorizontal="true"
-                        android:text="Diagnostic"
+                        android:text="Medicine"
                         android:layout_below="@+id/imagee"></TextView>
                 </RelativeLayout>
 
@@ -127,7 +130,7 @@
                 android:layout_centerInParent="true"
                 android:layout_height="110dp"
                 android:layout_weight="1"
-
+                android:id="@+id/home_card2"
                 card:cardCornerRadius="55dp">
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -180,7 +183,7 @@
                 android:layout_centerInParent="true"
                 android:layout_height="110dp"
                 android:layout_weight="1"
-
+android:id="@+id/home_card3"
                 card:cardCornerRadius="55dp">
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -216,6 +219,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="110dp"
+                android:id="@+id/home_card4"
                 android:layout_centerInParent="true"
                 android:layout_height="110dp"
                 android:layout_weight="1"
@@ -232,7 +236,7 @@
                         android:layout_marginTop="30dp"
 
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/medical"></ImageView>
+                        android:src="@drawable/ic_local_offer_black_24dp"></ImageView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -240,7 +244,7 @@
                         android:maxLines="2"
                         android:textColor="#000"
                         android:layout_centerHorizontal="true"
-                        android:text="Diagnostic"
+                        android:text="Offers"
                         android:layout_below="@+id/imageeeee"></TextView>
                 </RelativeLayout>
 
@@ -267,7 +271,7 @@
             android:layout_width="match_parent"
             card:cardCornerRadius="8dp"
             android:layout_height="59dp"
-
+android:id="@+id/myorder"
             android:layout_margin="8dp"
 
             >

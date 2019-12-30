@@ -38,8 +38,8 @@ public class Account extends Fragment {
                 textView.setText(s);
             }
         });
-        return root;    }
-
+        return root;
+    }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

@@ -34,7 +34,7 @@
         android:layout_marginLeft="16dp"
         android:layout_height="wrap_content"></TextView>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/cart_recyclerView"
         android:layout_width="match_parent"
         android:layout_below="@id/items"
         tools:listitem="@layout/item_cart"
@@ -48,13 +48,13 @@
         android:layout_alignParentBottom="true">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/placeorderbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
             android:background="@color/colorPrimary"
             android:padding="8dp"
-            android:text="Add delivery Address"
+            android:text="place order"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"></Button>
 

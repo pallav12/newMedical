@@ -3,7 +3,7 @@ package com.alonemusk.medicalapp.ui.Cart;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-
+import com.alonemusk.medicalapp.ui.Cart.Go_TO_Cart;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -13,9 +13,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.alonemusk.medicalapp.R;
+import com.alonemusk.medicalapp.classes.JsonParsing;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,12 +44,16 @@ import com.alonemusk.medicalapp.R;
  * Use the {@link Cart#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Cart extends Fragment implements CartAdapter.GoTOCart{
+public class Cart extends Fragment implements Go_TO_Cart {
+    ArrayList<CartDetails> cartDetails;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+ArrayList<CartDetails> cartDetailsArrayList;
+RecyclerView Cart_Recycler_View;
+Go_TO_Cart go_to_cart;
+Button PlaceOrderBtn;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -66,6 +89,7 @@ public class Cart extends Fragment implements CartAdapter.GoTOCart{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        cartDetails=new ArrayList<CartDetails>();
     }
 
     @Override
@@ -73,19 +97,109 @@ public class Cart extends Fragment implements CartAdapter.GoTOCart{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_cart, container, false);
+        final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         ImageView imageView=v.findViewById(R.id.image);
+        Cart_Recycler_View=v.findViewById(R.id.cart_recyclerView);
+        PlaceOrderBtn=v.findViewById(R.id.placeorderbutton);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
                 navController.navigate(R.id.action_navigation_cart_to_navigation_after_search);
 
             }
         });
-        RecyclerView recyclerView=v.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new CartAdapter(getContext(),this));
+
+
+        PlaceOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle b=new Bundle();
+          //  b.p"arraylist", cartDetailsArrayList);
+                navController.navigate(R.id.action_navigation_cart_to_confirm_order_fregment2);
+
+            }
+        });
+                 cartDetailsArrayList=new ArrayList<>();
+                 go_to_cart=this;
+       // RecyclerView recyclerView=v.findViewById(R.id.recyclerView);
+        volly(go_to_cart);
+        Cart_Recycler_View.setLayoutManager(new LinearLayoutManager(getContext()));
+
         return v;
+    }
+    private void volly(final Go_TO_Cart go_to_cart){
+        String url="http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/cart/get-user-cart/"+10001;
+
+
+        final RequestQueue queue = Volley.newRequestQueue(getActivity());
+
+        //  Toast.makeText(Mutual_details.this,""+url,Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+
+
+        final StringRequest jsonRequest = new StringRequest(Request.Method.GET, url
+                , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+             //   Toast.makeText(getActivity(), "nothing "+response, Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(getActivity(), "cart fetched this", Toast.LENGTH_SHORT).show();
+                Gson gson = new Gson();
+                cartDetails.clear();
+                ArrayList<JSONObject>jsonObjects= JsonParsing.parsejson(response);
+
+                for(JSONObject obj:jsonObjects){
+                    CartDetails object = gson.fromJson(String.valueOf(obj), CartDetails.class);
+                         cartDetails.add(object);
+                }
+if(cartDetails.size()>0) {
+    Cart_Recycler_View.setAdapter(new CartAdapter(getActivity(), cartDetails, go_to_cart));
+}
+
+    Toast.makeText(getActivity(), "nothing is there in cart", Toast.LENGTH_SHORT).show();
+
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            public void onErrorResponse(VolleyError error) {
+              //  Toast.makeText(Mutual_details.this,"check internet connection"+error,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "cart not fetched   "+error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                cartDetails.clear();
+
+                Cart_Recycler_View.setAdapter(new CartAdapter(getActivity(), cartDetails, go_to_cart));
+
+
+            Toast.makeText(getActivity(), "nothing is there in cart", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }){
+            @Override
+            public HashMap<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<>();
+                //  params.put("Content-Type", " text/javascript");
+                params.put("Content-Type", "application/json");
+
+                return params;
+
+
+
+            }
+        }
+
+                ;
+
+
+// Add the request to the RequestQueue.
+        queue.add(jsonRequest);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -118,6 +232,211 @@ public class Cart extends Fragment implements CartAdapter.GoTOCart{
         navController.navigate(R.id.action_navigation_cart_to_navigation_after_search);
 
     }
+
+    @Override
+    public void OnDeleteClicked(int position) {
+deletefromcart(cartDetails.get(position).getUser_id(),cartDetails.get(position).getMedicine_id());
+    }
+    public void deletefromcart(int user_id,int medicine_id){
+
+
+
+        Toast.makeText(getActivity(), "in addtocart", Toast.LENGTH_SHORT).show();
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+
+        // JSONObject urlf = new JSONObject(data);
+        JSONObject data2 = new JSONObject();
+
+
+
+
+        final JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.DELETE
+                , "http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/cart/delete-item-cart/"+user_id+"/"+medicine_id, data2,
+                new com.android.volley.Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //  Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
+                        volly(go_to_cart);
+                    }
+
+
+                },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), "volly error   " + error, Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+        ) {
+
+            @Override
+            public HashMap<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<>();
+                //  params.put("Content-Type", " text/javascript");
+                params.put("Content-Type", "application/json");
+
+                return params;
+
+
+
+            }
+
+
+        };
+
+
+        queue.add(putRequest);
+    }
+
+    @Override
+    public void OnIncreaseClicked(int position) {
+        if(cartDetails.get(position).getQuantity()<10){
+          //  cartDetails.get(position).setQuantity(cartDetails.get(position).getQuantity()+1);
+        increaseinserver(cartDetails.get(position).getUser_id(),cartDetails.get(position).getMedicine_id(),cartDetails.get(position).getQuantity()+1);
+        }
+        else{
+            Toast.makeText(getActivity(), "you can not add more then 10", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void increaseinserver(int user_id,int medicine_id,int qt){
+
+
+
+
+
+        Toast.makeText(getActivity(), "in addtocart", Toast.LENGTH_SHORT).show();
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+
+        // JSONObject urlf = new JSONObject(data);
+        JSONObject data2 = new JSONObject();
+
+        try{
+            data2.put("user_id",user_id);
+            data2.put("medicine_id",medicine_id);
+            data2.put("quantity",qt);
+
+
+
+
+        }catch(Exception e){
+
+        }
+
+
+        final JsonObjectRequest putRequest = new JsonObjectRequest(com.android.volley.Request.Method.POST
+                , "http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/cart/insert-medicine-cart", data2,
+                new com.android.volley.Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                      //  Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
+                        volly(go_to_cart);
+                    }
+
+
+                },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), "volly error   " + error, Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+        ) {
+
+            @Override
+            public HashMap<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<>();
+                //  params.put("Content-Type", " text/javascript");
+                params.put("Content-Type", "application/json");
+
+                return params;
+
+
+
+            }
+
+
+        };
+
+
+        queue.add(putRequest);
+
+        }
+
+    @Override
+    public void OnDecreaseClicked(int position) {
+        if(cartDetails.get(position).getQuantity()==1){
+            Toast.makeText(getActivity(), "minimum 1 is required", Toast.LENGTH_SHORT).show();
+            return ;
+        }
+        if(cartDetails.get(position).getQuantity()>2){
+         //   cartDetails.get(position).setQuantity(cartDetails.get(position).getQuantity()-1);
+        decreaseQuantityfromServer(cartDetails.get(position).getUser_id(),cartDetails.get(position).getMedicine_id(),cartDetails.get(position).getQuantity()-1);
+        }
+
+    }
+public void decreaseQuantityfromServer(int user_id,int medicine_id,int qt){
+
+
+
+    Toast.makeText(getActivity(), "in addtocart", Toast.LENGTH_SHORT).show();
+    RequestQueue queue = Volley.newRequestQueue(getActivity());
+
+    // JSONObject urlf = new JSONObject(data);
+    JSONObject data2 = new JSONObject();
+
+    try{
+        data2.put("user_id",user_id);
+        data2.put("medicine_id",medicine_id);
+        data2.put("quantity",qt);
+
+
+
+
+    }catch(Exception e){
+
+    }
+
+
+    final JsonObjectRequest putRequest = new JsonObjectRequest(com.android.volley.Request.Method.POST
+            , "http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/cart/insert-medicine-cart", data2,
+            new com.android.volley.Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    //  Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
+                    volly(go_to_cart);
+                }
+
+
+            },
+            new com.android.volley.Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getActivity(), "volly error   " + error, Toast.LENGTH_SHORT).show();
+
+                }
+            }
+    ) {
+
+        @Override
+        public HashMap<String, String> getHeaders() throws AuthFailureError {
+            HashMap<String, String> params = new HashMap<>();
+            //  params.put("Content-Type", " text/javascript");
+            params.put("Content-Type", "application/json");
+
+            return params;
+
+
+
+        }
+
+
+    };
+
+
+    queue.add(putRequest);
+}
 
     /**
      * This interface must be implemented by activities that contain this

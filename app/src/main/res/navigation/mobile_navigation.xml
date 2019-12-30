@@ -39,6 +39,21 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_navigation_home_to_allPresListFrag"
+            app:destination="@id/allPresListFrag" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_cart"
+            app:destination="@id/navigation_cart" />
+        <action
+            android:id="@+id/action_navigation_home_to_myOrderListFrag"
+            app:destination="@id/myOrderListFrag" />
+        <action
+            android:id="@+id/action_navigation_home_to_diagnosticMainFrag"
+            app:destination="@id/diagnosticMainFrag" />
+        <action
+            android:id="@+id/action_navigation_home_to_offerFrag"
+            app:destination="@id/offerFrag" />
 
 
     </fragment>
@@ -142,7 +157,80 @@
         <action
             android:id="@+id/action_navigation_cart_to_navigation_after_search"
             app:destination="@id/navigation_after_search" />
+        <action
+            android:id="@+id/action_navigation_cart_to_confirm_order_fregment"
+            app:destination="@id/confirm_order_fregment" />
+        <action
+            android:id="@+id/action_navigation_cart_to_confirm_order_fregment2"
+            app:destination="@id/confirm_order_fregment" />
     </fragment>
+    <fragment
+        android:id="@+id/presOrderDetails"
+        android:name="com.alonemusk.medicalapp.ui.OrderByPres.PresOrderDetails"
+        android:label="pres_order_details_fragment"
+        tools:layout="@layout/pres_order_details_fragment" />
+    <fragment
+        android:id="@+id/allPresListFrag"
+        android:name="com.alonemusk.medicalapp.ui.OrderByPres.AllPresListFrag"
+        android:label="all_pres_list_fragment"
+        tools:layout="@layout/all_pres_list_fragment" >
+        <action
+            android:id="@+id/action_allPresListFrag_to_presOrderDetails"
+            app:destination="@id/presOrderDetails" />
+        <action
+            android:id="@+id/action_allPresListFrag_to_submitPresDetailsFrag"
+            app:destination="@id/submitPresDetailsFrag" />
+    </fragment>
+    <fragment
+        android:id="@+id/submitPresDetailsFrag"
+        android:name="com.alonemusk.medicalapp.ui.OrderByPres.SubmitPresDetailsFrag"
+        android:label="submit_pres_details_fragment"
+        tools:layout="@layout/submit_pres_details_fragment" />
+    <fragment
+        android:id="@+id/confirm_order_fregment"
+        android:name="com.alonemusk.medicalapp.ui.Checkout.Confirm_order_fregment"
+        android:label="confirm_order_fregment_fragment"
+        tools:layout="@layout/confirm_order_fregment_fragment" >
+        <action
+            android:id="@+id/action_confirm_order_fregment_to_paymentMethodFragment"
+            app:destination="@id/paymentMethodFragment" />
+        <action
+            android:id="@+id/action_confirm_order_fregment_to_navigation_adress"
+            app:destination="@id/navigation_adress" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentMethodFragment"
+        android:name="com.alonemusk.medicalapp.ui.Checkout.PaymentMethodFragment"
+        android:label="payment_method_fragment"
+        tools:layout="@layout/payment_method_fragment" >
+        <action
+            android:id="@+id/action_paymentMethodFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/myOrderDetailsFrag"
+        android:name="com.alonemusk.medicalapp.ui.MyOrders.MyOrderDetailsFrag"
+        android:label="my_order_details_fragment"
+        tools:layout="@layout/my_order_details_fragment" />
+    <fragment
+        android:id="@+id/myOrderListFrag"
+        android:name="com.alonemusk.medicalapp.ui.MyOrders.MyOrderListFrag"
+        android:label="my_order_list_fragment"
+        tools:layout="@layout/my_order_list_fragment" >
+        <action
+            android:id="@+id/action_myOrderListFrag_to_myOrderDetailsFrag"
+            app:destination="@id/myOrderDetailsFrag" />
+    </fragment>
+    <fragment
+        android:id="@+id/diagnosticMainFrag"
+        android:name="com.alonemusk.medicalapp.ui.Diagonostic.DiagnosticMainFrag"
+        android:label="diagnostic_main_fragment"
+        tools:layout="@layout/diagnostic_main_fragment" />
+    <fragment
+        android:id="@+id/offerFrag"
+        android:name="com.alonemusk.medicalapp.ui.Offers.OfferFrag"
+        android:label="offer_fragment"
+        tools:layout="@layout/offer_fragment" />
 
 
 </navigation>

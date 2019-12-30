@@ -3,14 +3,17 @@ package com.alonemusk.medicalapp.ui.EnterAdress;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alonemusk.medicalapp.R;
+import com.alonemusk.medicalapp.ui.Checkout.Confirm_order_fregment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +40,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         View itemView= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.note,viewGroup,false);
         Toolbar toolbar=itemView.findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.toolbar_menu);
+
         return new NoteHolder(itemView,onMenuClicked);
     }
 
@@ -79,12 +83,23 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
 
 
-        public NoteHolder(@NonNull View itemView, final onMenuClicked onMenuClicked) {
+        public NoteHolder(@NonNull final View itemView, final onMenuClicked onMenuClicked) {
             super(itemView);
             title=itemView.findViewById(R.id.title);
             this.onMenuClicked=onMenuClicked;
             description=itemView.findViewById(R.id.description);
             Toolbar toolbar=itemView.findViewById(R.id.toolbar);
+itemView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+
+                //   Confirm_order_fregment.selected_address=notes.get(getAdapterPosition()).getAddress_id();
+                Toast.makeText(context, "item clicked", Toast.LENGTH_SHORT).show();
+                Confirm_order_fregment.selected_address=110;
+
+    }
+});
+
             toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
@@ -113,4 +128,5 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     public interface onMenuClicked{
         void onMenuClicked(int i,int j);
     }
+
 }
