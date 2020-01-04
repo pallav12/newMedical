@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/linearlayoutconfirmfrag"
+    android:visibility="visible"
+    tools:context=".ui.Checkout.Confirm_order_fregment">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <LinearLayout
+
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Order Summery"
+          android:gravity="center"
+          android:textSize="20dp"
+          ></TextView>
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/confirm_order_recyclerview"
+       ></androidx.recyclerview.widget.RecyclerView>
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="apply Coupon"
+       android:layout_marginTop="5dp"
+       android:textSize="16dp"
+       android:textStyle="bold"
+       android:layout_marginLeft="5dp"
+       ></TextView>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+   <EditText
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_weight="1"
+       android:hint="apply your coupon here"
+
+       ></EditText>
+   <Button
+       android:layout_width="200dp"
+
+       android:text="apply"
+       android:layout_weight="1"
+       android:layout_height="wrap_content"
+       ></Button>
+</LinearLayout>
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="you got 50 off"
+       android:textSize="16dp"
+       >
+
+   </TextView>
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="5dp"
+
+       >
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+
+          android:orientation="vertical">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:padding="10dp"
+          android:layout_height="wrap_content">
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="20dp"
+          android:layout_weight="1"
+          android:text="total amount : "
+
+
+          ></TextView>
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="20dp"
+             android:id="@+id/total_price"
+             android:text="50 "
+             android:layout_weight="1"
+             ></TextView>
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:padding="10dp"
+          android:layout_height="wrap_content">
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="20dp"
+             android:layout_weight="1"
+             android:text="total discount : "
+
+
+             ></TextView>
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="20dp"
+             android:text="50 "
+             android:layout_weight="1"
+             ></TextView>
+      </LinearLayout>
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:padding="10dp"
+             android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="shipping charges : "
+
+
+                ></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="50 "
+                android:layout_weight="1"
+                ></TextView>
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:padding="10dp"
+             android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="other charges : "
+
+
+                ></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="50 "
+                android:layout_weight="1"
+                ></TextView>
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:padding="10dp"
+             android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="Total amount : "
+
+
+                ></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="50 "
+                android:layout_weight="1"
+                ></TextView>
+         </LinearLayout>
+
+      </LinearLayout>
+   </androidx.cardview.widget.CardView>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          >
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="address"
+             android:layout_weight="1"
+             ></TextView>
+         <Button
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/changeaddressbtn"
+             android:layout_weight="1"
+             android:text="change"
+             ></Button>
+
+      </LinearLayout>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+
+       >
+
+
+      <Button
+          android:layout_width="match_parent"
+         android:layout_weight="1"
+          android:text="got to cart"
+          android:id="@+id/gottocart"
+          android:background="@color/colorPrimary"
+          android:layout_margin="5dp"
+          android:layout_height="wrap_content">
+
+      </Button>
+      <Button
+          android:layout_width="match_parent"
+          android:id="@+id/gotopayment"
+          android:layout_margin="5dp"
+          android:layout_height="wrap_content"
+          android:text="payment"
+          android:background="@color/colorPrimary"
+          android:layout_weight="1"></Button>
+
+   </LinearLayout>
+   </LinearLayout>
+
+</ScrollView>
+</LinearLayout>

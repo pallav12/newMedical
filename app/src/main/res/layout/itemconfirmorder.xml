@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:elevation="2dp"
+        android:layout_margin="1dp">
+    <LinearLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/cart_medicine_name_id"
+        android:layout_marginTop="8dp"
+        android:text="KETO AZ HAIR LOSS LOTION"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
+
+
+    <TextView
+        android:layout_alignParentEnd="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:text="$222"
+        android:id="@+id/confirorder_pricetextview"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dp"
+        android:layout_height="wrap_content"></TextView>
+</RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_below="@id/companyName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/companyName"
+            android:layout_marginLeft="16dp"
+
+            android:text="By med organic pvt ltd"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="qt-"
+            android:id="@+id/confirm_order_quantity_id"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            ></TextView>
+
+    </RelativeLayout>
+
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
