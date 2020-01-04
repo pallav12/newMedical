@@ -228,23 +228,27 @@ import static android.app.Activity.RESULT_OK;
     @Override
     public void onMenuClicked(final int i, int j) {
 
-        switch (j){
-            case 1:
+        switch (j) {
+            case 1: {
+               // delete(noted.get(i).getAddress_id());
                 noteViewModel.delete(noted.get(i));
-            case 2:
+                break;
+            }
+            case 2: {
                 String address = noted.get(i).getAddress();
-                String city=noted.get(i).getCity();
-                String state=noted.get(i).getState();
+                String city = noted.get(i).getCity();
+                String state = noted.get(i).getState();
 
                 Bundle bundle = new Bundle();
                 bundle.putString("address", address);
                 bundle.putInt("position", i);
                 bundle.putString("city", city);
-                bundle.putString("state",state);
+                bundle.putString("state", state);
                 final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
-                navController.navigate(R.id.action_navigation_home_to_edit_Form,bundle);
-
+                navController.navigate(R.id.action_navigation_home_to_edit_Form, bundle);
+            break;
+            }
         }
 
 
