@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:layout_marginTop="5dp"
     android:orientation="vertical">
 <TextView
     android:id="@+id/title"
@@ -21,6 +23,7 @@
         android:id="@+id/subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         android:layout_marginLeft="16dp"
         android:layout_below="@+id/title"
         android:text="By Med MENOR Graphic pvt ltd">
@@ -30,7 +33,7 @@
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
 
         android:layout_marginLeft="16dp"
@@ -43,7 +46,7 @@
     <TextView
         android:id="@+id/prise"
         android:layout_width="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="16dp"
         android:textColor="#000"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -58,7 +61,7 @@
         android:layout_below="@+id/prise"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp">
 
