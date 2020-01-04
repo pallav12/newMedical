@@ -15,11 +15,23 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.alonemusk.medicalapp.BaseAddress;
 import com.alonemusk.medicalapp.R;
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 public class PaymentMethodFragment extends Fragment {
 CardView cod;
+    NavController navController;
     private PaymentMethodViewModel mViewModel;
 
     public static PaymentMethodFragment newInstance() {
@@ -31,17 +43,80 @@ CardView cod;
                              @Nullable Bundle savedInstanceState) {
        View v= inflater.inflate(R.layout.payment_method_fragment, container, false);
        cod=v.findViewById(R.id.cod);
-        final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+      navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
        cod.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+                placeorder();
 
-
-               navController.navigate(R.id.action_paymentMethodFragment_to_navigation_home);
-reload();
            }
        });
        return v;
+    }
+    private void placeorder(){
+String url=(new BaseAddress()).getBaseurl() +"/cart/submit-order";
+
+
+
+        Toast.makeText(getActivity(), "in addtocart", Toast.LENGTH_SHORT).show();
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+
+        // JSONObject urlf = new JSONObject(data);
+        JSONObject data2 = new JSONObject();
+
+        try{
+            data2.put("user_id",10001);
+          data2.put("address_id",1);
+
+
+
+
+        }catch(Exception e){
+
+        }
+
+
+        final JsonObjectRequest putRequest = new JsonObjectRequest(com.android.volley.Request.Method.POST
+                , url, data2,
+                new com.android.volley.Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
+
+
+                        navController.navigate(R.id.action_paymentMethodFragment_to_navigation_home);
+                        reload();
+                    }
+
+
+                },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), "volly error   " + error, Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+        ) {
+
+            @Override
+            public HashMap<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<>();
+                //  params.put("Content-Type", " text/javascript");
+                params.put("Content-Type", "application/json");
+
+                return params;
+
+
+
+            }
+
+
+        };
+
+
+        queue.add(putRequest);
+
     }
 
     @Override

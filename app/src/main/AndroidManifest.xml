@@ -31,18 +31,21 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".Testingimage">
 
+
+        </activity>
+        <activity android:name=".AfterSearch" />
+        <activity
+            android:name=".FirstActivity"
+            android:label="@string/title_activity_first" >
+
+
+        </activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".AfterSearch" />
-        <activity
-            android:name=".FirstActivity"
-            android:label="@string/title_activity_first" />
-        <activity android:name=".MainActivity">
-
         </activity>
 
         <provider
