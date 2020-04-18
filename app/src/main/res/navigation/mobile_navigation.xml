@@ -185,7 +185,11 @@
         android:id="@+id/submitPresDetailsFrag"
         android:name="com.alonemusk.medicalapp.ui.OrderByPres.SubmitPresDetailsFrag"
         android:label="submit_pres_details_fragment"
-        tools:layout="@layout/submit_pres_details_fragment" />
+        tools:layout="@layout/submit_pres_details_fragment" >
+        <action
+            android:id="@+id/action_submitPresDetailsFrag_to_navigation_adress"
+            app:destination="@id/navigation_adress" />
+    </fragment>
     <fragment
         android:id="@+id/confirm_order_fregment"
         android:name="com.alonemusk.medicalapp.ui.Checkout.Confirm_order_fregment"
@@ -204,8 +208,8 @@
         android:label="payment_method_fragment"
         tools:layout="@layout/payment_method_fragment" >
         <action
-            android:id="@+id/action_paymentMethodFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            android:id="@+id/action_paymentMethodFragment_to_orderPlacedFrag"
+            app:destination="@id/orderPlacedFrag" />
     </fragment>
     <fragment
         android:id="@+id/myOrderDetailsFrag"
@@ -231,6 +235,15 @@
         android:name="com.alonemusk.medicalapp.ui.Offers.OfferFrag"
         android:label="offer_fragment"
         tools:layout="@layout/offer_fragment" />
+    <fragment
+        android:id="@+id/orderPlacedFrag"
+        android:name="com.alonemusk.medicalapp.ui.Checkout.OrderPlacedFrag"
+        android:label="fragment_order_placed"
+        tools:layout="@layout/fragment_order_placed" >
+        <action
+            android:id="@+id/action_orderPlacedFrag_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
 
 </navigation>

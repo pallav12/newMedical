@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "451515433957",
+    "firebase_url": "https://medical-app-701fb.firebaseio.com",
+    "project_id": "medical-app-701fb",
+    "storage_bucket": "medical-app-701fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451515433957:android:f7f5e4c82820539efc650c",
+        "android_client_info": {
+          "package_name": "com.alonemusk.medicalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451515433957-nnosakjkqop7hgl281eeird8t0e3t4nl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alonemusk.medicalapp",
+            "certificate_hash": "0c333ee5d7660d71e77a890fe4c1627358408247"
+          }
+        },
+        {
+          "client_id": "451515433957-nksp483ovl2tkjfa50mscutofrma7ee4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDn94eEv40SYRCVcJZUAvz85D5BR5rAVv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451515433957-nksp483ovl2tkjfa50mscutofrma7ee4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

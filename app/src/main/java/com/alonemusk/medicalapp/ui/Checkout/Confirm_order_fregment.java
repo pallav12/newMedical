@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Confirm_order_fregment extends Fragment {
-    public static int selected_address=0;
+    public static int selected_address=-1;
 RecyclerView Confirm_order_recyclerview;
 LinearLayout confirmlinearlayout;
     private ConfirmOrderFregmentViewModel mViewModel;
@@ -87,7 +87,15 @@ Changeaddressbtn.setOnClickListener(new View.OnClickListener() {
        gotopayment.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               navController.navigate(R.id.action_confirm_order_fregment_to_paymentMethodFragment);
+               Bundle b=new Bundle();
+               b.putInt("user_id",10001);
+               b.putInt("address_id",selected_address);
+               if(selected_address!=-1){
+               navController.navigate(R.id.action_confirm_order_fregment_to_paymentMethodFragment,b);
+           }
+           else {
+                   Toast.makeText(getActivity(), "please select a address", Toast.LENGTH_SHORT).show();
+               }
            }
        });
        return  v;

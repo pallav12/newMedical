@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="67dp"
+                android:background="#EEC213"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_marginLeft="21dp"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/orders"
+                android:textColor="#707070"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                app:layout_constraintStart_toEndOf="@+id/back_button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="26dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginLeft="18dp"
+                android:background="#EEC213"
+                android:clickable="true"
+                android:fadingEdge="none"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintTop_toTopOf="@+id/textView3"
+                app:srcCompat="?attr/homeAsUpIndicator" />
+
+            <View
+                android:id="@+id/card"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/round_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/orderID_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="20dp"
+                android:text="OrderID : "
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/card"
+                app:layout_constraintStart_toStartOf="@+id/card"
+                app:layout_constraintTop_toTopOf="@+id/card" />
+
+            <TextView
+                android:id="@+id/name_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="20dp"
+                android:text="Address :"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/card"
+                app:layout_constraintTop_toBottomOf="@+id/orderID_txt" />
+
+            <TextView
+                android:id="@+id/address_txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="20dp"
+                android:text="Address :"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/card"
+                app:layout_constraintTop_toBottomOf="@+id/name_txt" />
+
+            <TextView
+                android:id="@+id/landmark_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="20dp"
+                android:text="Landmark :"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/card"
+                app:layout_constraintTop_toBottomOf="@+id/address_txt2" />
+
+            <TextView
+                android:id="@+id/city_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="20dp"
+                android:text="CIty :"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/card"
+                app:layout_constraintTop_toBottomOf="@+id/landmark_txt" />
+
+            <TextView
+                android:id="@+id/state_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="20dp"
+                android:text="State :"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/card"
+                app:layout_constraintTop_toBottomOf="@+id/city_state" />
+
+            <TextView
+                android:id="@+id/pincode_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="20dp"
+                android:text="Pincode :"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/card"
+                app:layout_constraintTop_toBottomOf="@+id/state_txt" />
+
+            <TextView
+                android:id="@+id/mobile_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="20dp"
+                android:text="Mobile No :"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/card"
+                app:layout_constraintTop_toBottomOf="@+id/pincode_txt" />
+
+            <EditText
+                android:id="@+id/orderID"
+                android:layout_width="100dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="12dp"
+                android:clickable="false"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="none"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/orderID_txt"
+                app:layout_constraintTop_toTopOf="@+id/card" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="2dp"
+                android:clickable="false"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="none"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/name_txt"
+                app:layout_constraintTop_toBottomOf="@+id/orderID" />
+
+            <EditText
+                android:id="@+id/address2"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="2dp"
+                android:clickable="false"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="none"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/address_txt2"
+                app:layout_constraintTop_toBottomOf="@+id/name" />
+
+            <EditText
+                android:id="@+id/landmark"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="2dp"
+                android:clickable="false"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="none"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/landmark_txt"
+                app:layout_constraintTop_toBottomOf="@+id/address2" />
+
+            <EditText
+                android:id="@+id/city"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="2dp"
+                android:clickable="false"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="none"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/city_state"
+                app:layout_constraintTop_toBottomOf="@+id/landmark" />
+
+            <EditText
+                android:id="@+id/state"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="2dp"
+                android:clickable="false"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="none"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/state_txt"
+                app:layout_constraintTop_toBottomOf="@+id/city" />
+
+            <EditText
+                android:id="@+id/pincode"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="2dp"
+                android:clickable="false"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="none"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/pincode_txt"
+                app:layout_constraintTop_toBottomOf="@+id/state" />
+
+            <EditText
+                android:id="@+id/mobile_no"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="2dp"
+                android:clickable="false"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="none"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/mobile_txt"
+                app:layout_constraintTop_toBottomOf="@+id/pincode" />
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="166dp"
+                android:layout_height="143dp"
+                android:layout_marginTop="27dp"
+                android:alpha="0.5"
+                android:padding="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card"
+                app:srcCompat="@drawable/ic_icons8_image_file" />
+
+            <View
+                android:id="@+id/view13"
+                android:layout_width="0dp"
+                android:layout_height="119dp"
+                android:layout_marginTop="17dp"
+                android:alpha="0.16"
+                android:background="#707070"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Verification Process"
+                android:textColor="#707070"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/view13"
+                app:layout_constraintTop_toTopOf="@+id/view13" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="118dp"
+                android:layout_height="17dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="70dp"
+                android:text="Address Verification"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view13" />
+
+            <Button
+                android:id="@+id/not_verified_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="63dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginRight="23dp"
+                android:background="@drawable/button_background"
+                android:text="Not Verified"
+                android:textColor="#707070"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view13" />
+
+            <Button
+                android:id="@+id/verified_btn"
+                android:layout_width="86dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="63dp"
+                android:layout_marginEnd="132dp"
+                android:layout_marginRight="132dp"
+                android:background="@drawable/button_background"
+                android:text="Verified"
+                android:textColor="#707070"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView16"
+                app:layout_constraintTop_toTopOf="@+id/view13" />
+
+            <View
+                android:id="@+id/view12"
+                android:layout_width="0dp"
+                android:layout_height="91dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/round_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view13" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_marginTop="17dp"
+                android:text="Prescription Verification"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/view12"
+                app:layout_constraintStart_toStartOf="@+id/view12"
+                app:layout_constraintTop_toTopOf="@+id/view12" />
+
+            <Button
+                android:id="@+id/verified_btn2"
+                android:layout_width="86dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_background"
+                android:text="Verified"
+                android:textColor="#707070"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/view12"
+                app:layout_constraintStart_toStartOf="@+id/view12"
+                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+            <View
+                android:id="@+id/view155"
+                android:layout_width="0dp"
+                android:layout_height="91dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/round_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view12" />
+
+            <View
+                android:id="@+id/view15"
+                android:layout_width="0dp"
+                android:layout_height="91dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/round_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view14" />
+
+            <View
+                android:id="@+id/view16"
+                android:layout_width="0dp"
+                android:layout_height="91dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/round_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view15" />
+
+            <View
+                android:id="@+id/view18"
+                android:layout_width="463dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:alpha="0.16"
+                android:background="#707070"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view17" />
+
+            <View
+                android:id="@+id/view17"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/round_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view16" />
+
+            <View
+                android:id="@+id/view14"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/round_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view155" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_marginTop="17dp"
+                android:text="Name"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/view12"
+                app:layout_constraintStart_toStartOf="@+id/view12"
+                app:layout_constraintTop_toTopOf="@+id/view155" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="20dp"
+                android:text="Biling"
+                android:textColor="#707070"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/view12"
+                app:layout_constraintTop_toTopOf="@+id/view14" />
+
+            <Button
+                android:id="@+id/upload_bill_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/button_background"
+                android:text="Upload Bill"
+                android:textColor="#707070"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/bill_verified_btn"
+                app:layout_constraintStart_toStartOf="@+id/view12"
+                app:layout_constraintTop_toTopOf="@+id/view14" />
+
+            <Button
+                android:id="@+id/dispatched_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginLeft="68dp"
+                android:layout_marginTop="44dp"
+                android:background="@drawable/button_background"
+                android:text="Dispatched"
+                android:textColor="#707070"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@+id/view16"
+                app:layout_constraintTop_toTopOf="@+id/view16" />
+
+            <Button
+                android:id="@+id/submit_status_btn"
+                android:layout_width="89dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="110dp"
+                android:background="@drawable/button_background"
+                android:text="Submit Status"
+                android:textColor="#707070"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/view17"
+                app:layout_constraintStart_toStartOf="@+id/view17"
+                app:layout_constraintTop_toTopOf="@+id/view17" />
+
+            <Button
+                android:id="@+id/delivered_btn"
+                android:layout_width="132dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="80dp"
+                android:background="@drawable/button_background"
+                android:text="Delivered"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/view18"
+                app:layout_constraintStart_toStartOf="@+id/view18"
+                app:layout_constraintTop_toTopOf="@+id/view18"
+                app:layout_constraintVertical_bias="0.509" />
+
+            <Button
+                android:id="@+id/order_completed_btn"
+                android:layout_width="145dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/button_background"
+                android:text="Order Completed"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+            <Button
+                android:id="@+id/cancel_order_btn"
+                android:layout_width="145dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="60dp"
+                android:background="@drawable/button_background"
+                android:text="Cancel Order"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/order_completed_btn" />
+
+            <Button
+                android:id="@+id/not_delivered_btn"
+                android:layout_width="132dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/button_background"
+                android:text="Not Delivered"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/view18"
+                app:layout_constraintStart_toEndOf="@+id/delivered_btn"
+                app:layout_constraintTop_toTopOf="@+id/view18"
+                app:layout_constraintVertical_bias="0.509" />
+
+            <Button
+                android:id="@+id/not_dispatched_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="44dp"
+                android:background="@drawable/button_background"
+                android:text="Not Dispatched"
+                android:textColor="#707070"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/dispatched_btn"
+                app:layout_constraintTop_toTopOf="@+id/view16" />
+
+            <Button
+                android:id="@+id/name_verified_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_background"
+                android:text="Verified"
+                android:textColor="#707070"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/view155"
+                app:layout_constraintStart_toStartOf="@+id/view155"
+                app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+            <Button
+                android:id="@+id/bill_verified_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="72dp"
+                android:layout_marginRight="72dp"
+                android:background="@drawable/button_background"
+                android:text="Bill Verified"
+                android:textColor="#707070"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@+id/view14"
+                app:layout_constraintTop_toTopOf="@+id/view14" />
+
+            <EditText
+                android:id="@+id/amount_4"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:ems="10"
+                android:hint="Enter Amount"
+                android:inputType="textPersonName"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/view14"
+                app:layout_constraintTop_toTopOf="@+id/view14" />
+
+            <EditText
+                android:id="@+id/trackingID"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:ems="10"
+                android:hint="Tracking ID"
+                android:inputType="textPersonName"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/view17"
+                app:layout_constraintTop_toTopOf="@+id/view17" />
+
+            <EditText
+                android:id="@+id/trackingID2"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:ems="10"
+                android:hint="Expected date of delivery"
+                android:inputType="textPersonName"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/view17"
+                app:layout_constraintTop_toBottomOf="@+id/trackingID" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Order confirmed by user"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/view15"
+                app:layout_constraintTop_toTopOf="@+id/view15" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Dispatched Status"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/view16"
+                app:layout_constraintTop_toTopOf="@+id/view16" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Shipping Status"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/view17"
+                app:layout_constraintTop_toTopOf="@+id/view17" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="56dp"
+                android:text="Transaction ID"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/view15"
+                app:layout_constraintTop_toTopOf="@+id/view15" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:text="Payment Status"
+                android:textColor="#707070"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/view15"
+                app:layout_constraintTop_toTopOf="@+id/view15" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

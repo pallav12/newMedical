@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +33,10 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     private List<Note> notes=new ArrayList<>();
     onMenuClicked onMenuClicked;
     Context context;
-    public MyItemRecyclerViewAdapter(onMenuClicked onMenuClicked){
+    public  static int lastCheckedPosition = -1;
+    public MyItemRecyclerViewAdapter(Context c,onMenuClicked onMenuClicked){
         this.onMenuClicked=onMenuClicked;
+        this.context=c;
     }
     @NonNull
     @Override
@@ -46,12 +50,18 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
     @Override
     public void onBindViewHolder(@NonNull NoteHolder noteHolder, int i) {
-        Note currentnote=  notes.get(i);
+        final Note currentnote=  notes.get(i);
         Log.d(TAG, "onBindViewHolder: 0"+ currentnote.toString());
         noteHolder.title.setText(currentnote.getAddress()+"");
+        noteHolder.checkBox.setChecked(i == lastCheckedPosition);
 
         noteHolder.description.setText(currentnote.getCity()+"");
-
+       noteHolder.title.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        onMenuClicked.addressSelected(currentnote.getAddress_id());
+    }
+});
 
 
 
@@ -78,6 +88,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     class NoteHolder extends RecyclerView.ViewHolder{
         private TextView title;
         private TextView description;
+        private RadioButton checkBox;
         private TextView priority;
         onMenuClicked onMenuClicked;
 
@@ -89,23 +100,25 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
             this.onMenuClicked=onMenuClicked;
             description=itemView.findViewById(R.id.description);
             Toolbar toolbar=itemView.findViewById(R.id.toolbar);
-itemView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
+            checkBox=itemView.findViewById(R.id.radioButton);
+            Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+            checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    lastCheckedPosition = getAdapterPosition();
+                    //because of this blinking problem occurs so
+                    //i have a suggestion to add notifyDataSetChanged();
+                    //   notifyItemRangeChanged(0, list.length);//blink list problem
+                    notifyDataSetChanged();
 
-                //   Confirm_order_fregment.selected_address=notes.get(getAdapterPosition()).getAddress_id();
-                Toast.makeText(context, "item clicked", Toast.LENGTH_SHORT).show();
-                Confirm_order_fregment.selected_address=110;
-
-    }
-});
+                }
+            });
 
             toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
                     Log.d("clicked","clicked clicked");
                     switch (item.getItemId()){
-
                         case R.id.delete:
                             onMenuClicked.onMenuClicked(getAdapterPosition(),1);
                             break;
@@ -126,6 +139,7 @@ itemView.setOnClickListener(new View.OnClickListener() {
         }
     }
     public interface onMenuClicked{
+        void addressSelected(int address_id);
         void onMenuClicked(int i,int j);
     }
 

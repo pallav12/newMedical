@@ -19,12 +19,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.alonemusk.medicalapp.R;
 import com.alonemusk.medicalapp.classes.JsonParsing;
 import com.alonemusk.medicalapp.ui.Cart.CartAdapter;
 import com.alonemusk.medicalapp.ui.Cart.CartDetails;
+import com.alonemusk.medicalapp.ui.Checkout.Confirm_order_fregment;
 import com.alonemusk.medicalapp.ui.EnterAdress.dummy.DummyContent;
 import com.alonemusk.medicalapp.ui.EnterAdress.dummy.DummyContent.DummyItem;
 import com.android.volley.AuthFailureError;
@@ -93,6 +95,13 @@ import static android.app.Activity.RESULT_OK;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
+        Button setAddressBtn=view.findViewById(R.id.setAddressBtn);
+        setAddressBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
         addresslist=new ArrayList<>();
         RecyclerView recyclerView=view.findViewById(R.id.list);
 
@@ -169,7 +178,7 @@ import static android.app.Activity.RESULT_OK;
 
 // Add the request to the RequestQueue.
         queue.add(jsonRequest);
-       myItemRecyclerViewAdapter=new MyItemRecyclerViewAdapter(this);
+       myItemRecyclerViewAdapter=new MyItemRecyclerViewAdapter(getActivity(),this);
         // Set the adapter
         if (recyclerView instanceof RecyclerView) {
             Context context = view.getContext();
@@ -225,7 +234,15 @@ import static android.app.Activity.RESULT_OK;
         mListener = null;
     }
 
-    @Override
+        @Override
+        public void addressSelected(int address_id) {
+            Toast.makeText(getActivity(), "clicked this", Toast.LENGTH_SHORT).show();
+
+            Confirm_order_fregment.selected_address=address_id;
+            getActivity().onBackPressed();
+        }
+
+        @Override
     public void onMenuClicked(final int i, int j) {
 
         switch (j) {
@@ -248,6 +265,7 @@ import static android.app.Activity.RESULT_OK;
 
                 navController.navigate(R.id.action_navigation_home_to_edit_Form, bundle);
             break;
+
             }
         }
 
@@ -267,5 +285,6 @@ import static android.app.Activity.RESULT_OK;
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(DummyItem item);
+
     }
     }

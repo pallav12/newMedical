@@ -65,8 +65,8 @@ String url=(new BaseAddress()).getBaseurl() +"/cart/submit-order";
         JSONObject data2 = new JSONObject();
 
         try{
-            data2.put("user_id",10001);
-          data2.put("address_id",1);
+            data2.put("user_id",getArguments().getInt("user_id"));
+          data2.put("address_id",getArguments().getInt("address_id"));
 
 
 
@@ -84,8 +84,9 @@ String url=(new BaseAddress()).getBaseurl() +"/cart/submit-order";
                         Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
 
 
-                        navController.navigate(R.id.action_paymentMethodFragment_to_navigation_home);
-                        reload();
+                        navController.navigate(R.id.action_paymentMethodFragment_to_orderPlacedFrag);
+
+                       // reload();
                     }
 
 
@@ -124,6 +125,7 @@ String url=(new BaseAddress()).getBaseurl() +"/cart/submit-order";
         super.onActivityResult(requestCode, resultCode, data);
 
     }
+
     public void reload() {
         Intent intent = getActivity().getIntent();
         getActivity().overridePendingTransition(0, 0);

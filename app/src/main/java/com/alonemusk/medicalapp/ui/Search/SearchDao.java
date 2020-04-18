@@ -24,7 +24,6 @@ public interface SearchDao {
     void deleteAll();
 
 
-    @Query("SELECT * FROM note_table ORDER BY medicine_id DESC")
-    LiveData<List<SearchMedicine>> getAllnodes();
+
 
 }

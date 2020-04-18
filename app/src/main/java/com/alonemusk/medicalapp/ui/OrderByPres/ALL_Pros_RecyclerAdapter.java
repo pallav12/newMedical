@@ -19,6 +19,7 @@ import com.alonemusk.medicalapp.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ALL_Pros_RecyclerAdapter extends RecyclerView.Adapter<ALL_Pros_RecyclerAdapter.ViewHolder>
@@ -27,19 +28,18 @@ public class ALL_Pros_RecyclerAdapter extends RecyclerView.Adapter<ALL_Pros_Recy
 
 
 {
-    String samplearray[]={
-      "first",
-      "second",
-      "third"
-    };
+    ArrayList<OrderModel> orderModels=new ArrayList<>();
+
 
 
 
     Context mcontext;
+    AllorderDetailsInterface allorderDetailsInterface;
 
-    public ALL_Pros_RecyclerAdapter(Context context) {
+    public ALL_Pros_RecyclerAdapter(Context context,ArrayList<OrderModel> orderModels,AllorderDetailsInterface allorderDetailsInterface) {
       mcontext=context;
-
+    this.orderModels=orderModels;
+    this.allorderDetailsInterface=allorderDetailsInterface;
 
 
     }
@@ -57,28 +57,21 @@ public class ALL_Pros_RecyclerAdapter extends RecyclerView.Adapter<ALL_Pros_Recy
         public int currentItem;
 
         public TextView itemTitle;
-        public TextView itemDetail;
-        public LinearLayout linearLayout;
-
-        public ViewHolder(View itemView) {
+        public TextView orderstatus;
+        public TextView orderaddress;
+AllorderDetailsInterface allorderDetailsInterface;
+        public ViewHolder(View itemView, final AllorderDetailsInterface allorderDetailsInterface) {
             super(itemView);
-
+this.allorderDetailsInterface=allorderDetailsInterface;
             itemTitle = (TextView)itemView.findViewById(R.id.all_pres_list_item_textview);
+            orderstatus=itemView.findViewById(R.id.orderStatus);
+            orderaddress=itemView.findViewById(R.id.orderAddress);
 
-            linearLayout=itemView.findViewById(R.id.all_pres_list_item_layoutid);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                  switch (v.getId()){
-                      case R.id.all_pres_list_item_layoutid :
-                      {
-                          Toast.makeText(mcontext, "clicked", Toast.LENGTH_SHORT).show();
-                      }
-
-
-
-                  }
+allorderDetailsInterface.GOTOOrderDetails(getAdapterPosition());
 
 
                 }
@@ -90,19 +83,22 @@ public class ALL_Pros_RecyclerAdapter extends RecyclerView.Adapter<ALL_Pros_Recy
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.all_pres_list_layout_item, viewGroup, false);
-        ViewHolder viewHolder = new ViewHolder(v);
+        ViewHolder viewHolder = new ViewHolder(v,allorderDetailsInterface);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        viewHolder.itemTitle.setText(samplearray[i]);
+        viewHolder.itemTitle.setText(""+orderModels.get(i).getOrder_id());
+        viewHolder.orderstatus.setText(orderModels.get(i).getStatus());
+        viewHolder.orderaddress.setText(""+orderModels.get(i).getAddress_id());
+
 
 
     }
 
     @Override
     public int getItemCount() {
-        return samplearray.length;
+        return orderModels.size();
     }
 }

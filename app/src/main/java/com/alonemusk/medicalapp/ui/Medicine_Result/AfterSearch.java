@@ -214,7 +214,7 @@ go_to_cart_from_searchcard.setOnClickListener(new View.OnClickListener() {
                             for(JSONObject obj:jsonObjects){
                                  object = gson.fromJson(String.valueOf(obj), MedicineAttributes.class);
                                 Medicine_name_textview.setText(object.getMedicine_name());
-Price.setText(object.getPrice()+" INR");
+//Price.setText(object.getPrice()+" INR");
                                     relativeLayout.setVisibility(View.VISIBLE);
                             }
                             Log.d(TAG, "in funtion ");
@@ -263,8 +263,8 @@ Price.setText(object.getPrice()+" INR");
 //            case R.id.quantity:
 //            {
                 String text=adapterView.getItemAtPosition(i).toString();
-                Price.setText(""+Integer.parseInt(text)*Integer.parseInt(object.getPrice()));
-                Toast.makeText(getActivity(), "prive    "+object.getPrice(), Toast.LENGTH_SHORT).show();
+//                Price.setText(""+Integer.parseInt(text)*Integer.parseInt(object.getPrice()));
+//                Toast.makeText(getActivity(), "prive    "+object.getPrice(), Toast.LENGTH_SHORT).show();
 //            }
 //        }
     }

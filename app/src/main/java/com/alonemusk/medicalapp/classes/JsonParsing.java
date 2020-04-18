@@ -36,11 +36,11 @@ public class JsonParsing {
 
 
         Gson gson = new Gson();
-        Log.d("something", list.get(0).toString());
+       // Log.d("something", list.get(0).toString());
 
-        MedicineNameId object = gson.fromJson(String.valueOf(list.get(0)), MedicineNameId.class);
+      //  MedicineNameId object = gson.fromJson(String.valueOf(list.get(0)), MedicineNameId.class);
 
-        Log.d("something", object.toString());
+       // Log.d("something", object.toString());
 
         return list;
     }

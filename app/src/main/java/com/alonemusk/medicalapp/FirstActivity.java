@@ -8,6 +8,7 @@ import com.alonemusk.medicalapp.ui.EnterAdress.ItemFragment;
 import com.alonemusk.medicalapp.ui.EnterAdress.dummy.DummyContent;
 import com.alonemusk.medicalapp.ui.Medicine_Result.AfterSearch;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -19,10 +20,12 @@ import androidx.navigation.ui.NavigationUI;
 public class FirstActivity extends AppCompatActivity implements
         ItemFragment.OnListFragmentInteractionListener, AfterSearch.OnFragmentInteractionListener, Cart.OnFragmentInteractionListener
 {
+    private FirebaseAnalytics mFirebaseAnalytics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         getSupportActionBar().hide();
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
