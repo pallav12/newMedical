@@ -24,7 +24,7 @@
         android:layout_marginTop="88dp"
         android:text="Payment :"
         android:textSize="10sp"
-        app:layout_constraintEnd_toStartOf="@+id/payment"
+        app:layout_constraintEnd_toStartOf="@+id/paymentStatus"
         app:layout_constraintTop_toBottomOf="@+id/status_txt" />
 
     <EditText
