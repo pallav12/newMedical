@@ -3,62 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="0dp"
-        android:layout_height="67dp"
-        android:background="#EEC213"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Orders"
-        android:textColor="#707070"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintStart_toEndOf="@+id/back_button"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="26dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:background="#EEC213"
-        android:clickable="true"
-        android:fadingEdge="none"
-        android:focusable="auto"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:srcCompat="?attr/homeAsUpIndicator" />
 
     <View
         android:id="@+id/card"
         android:layout_width="0dp"
         android:layout_height="190dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_margin="8dp"
         android:background="@drawable/round_back"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/payment_txt"
@@ -87,7 +44,7 @@
         app:layout_constraintTop_toTopOf="@+id/card" />
 
     <EditText
-        android:id="@+id/payment"
+        android:id="@+id/paymentStatus"
         android:layout_width="80dp"
         android:layout_height="32dp"
         android:layout_marginTop="68dp"
