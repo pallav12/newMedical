@@ -1,7 +1,7 @@
 package com.alonemusk.medicalapp;
 
 public class BaseAddress {
-    private String baseurl="http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000";
+    private String baseurl="http://ec2-13-235-73-199.ap-south-1.compute.amazonaws.com:3000/";
 
     public BaseAddress() {
     }

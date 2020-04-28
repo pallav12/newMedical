@@ -155,7 +155,6 @@ import static android.app.Activity.RESULT_OK;
         }, new Response.ErrorListener() {
             public void onErrorResponse(VolleyError error) {
                 //  Toast.makeText(Mutual_details.this,"check internet connection"+error,Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "cart not fetched"+error, Toast.LENGTH_SHORT).show();
 
             }
 

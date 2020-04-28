@@ -3,19 +3,18 @@ package com.alonemusk.medicalapp.ui.Cart;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import com.alonemusk.medicalapp.ui.Cart.Go_TO_Cart;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alonemusk.medicalapp.R;
 import com.alonemusk.medicalapp.classes.JsonParsing;
@@ -29,8 +28,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -50,10 +47,10 @@ public class Cart extends Fragment implements Go_TO_Cart {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-ArrayList<CartDetails> cartDetailsArrayList;
-RecyclerView Cart_Recycler_View;
-Go_TO_Cart go_to_cart;
-Button PlaceOrderBtn;
+    ArrayList<CartDetails> cartDetailsArrayList;
+    RecyclerView Cart_Recycler_View;
+    Go_TO_Cart go_to_cart;
+    Button PlaceOrderBtn;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -89,18 +86,18 @@ Button PlaceOrderBtn;
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        cartDetails=new ArrayList<CartDetails>();
+        cartDetails = new ArrayList<CartDetails>();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_cart, container, false);
+        View v = inflater.inflate(R.layout.fragment_cart, container, false);
         final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        ImageView imageView=v.findViewById(R.id.image);
-        Cart_Recycler_View=v.findViewById(R.id.cart_recyclerView);
-        PlaceOrderBtn=v.findViewById(R.id.placeorderbutton);
+        ImageView imageView = v.findViewById(R.id.image);
+        Cart_Recycler_View = v.findViewById(R.id.cart_recyclerView);
+        PlaceOrderBtn = v.findViewById(R.id.placeorderbutton);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,22 +111,23 @@ Button PlaceOrderBtn;
         PlaceOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle b=new Bundle();
-          //  b.p"arraylist", cartDetailsArrayList);
+                Bundle b = new Bundle();
+                //  b.p"arraylist", cartDetailsArrayList);
                 navController.navigate(R.id.action_navigation_cart_to_confirm_order_fregment2);
 
             }
         });
-                 cartDetailsArrayList=new ArrayList<>();
-                 go_to_cart=this;
-       // RecyclerView recyclerView=v.findViewById(R.id.recyclerView);
+        cartDetailsArrayList = new ArrayList<>();
+        go_to_cart = this;
+        // RecyclerView recyclerView=v.findViewById(R.id.recyclerView);
         volly(go_to_cart);
         Cart_Recycler_View.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return v;
     }
-    private void volly(final Go_TO_Cart go_to_cart){
-        String url="http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/cart/get-user-cart/"+10001;
+
+    private void volly(final Go_TO_Cart go_to_cart) {
+        String url = "http://ec2-13-235-73-199.ap-south-1.compute.amazonaws.com:3000/cart/get-user-cart/mahendra";
 
 
         final RequestQueue queue = Volley.newRequestQueue(getActivity());
@@ -137,31 +135,25 @@ Button PlaceOrderBtn;
         //  Toast.makeText(Mutual_details.this,""+url,Toast.LENGTH_SHORT).show();
 
 
-
-
-
-
-
-
         final StringRequest jsonRequest = new StringRequest(Request.Method.GET, url
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-             //   Toast.makeText(getActivity(), "nothing "+response, Toast.LENGTH_SHORT).show();
-            //    Toast.makeText(getActivity(), "cart fetched this", Toast.LENGTH_SHORT).show();
+                //   Toast.makeText(getActivity(), "nothing "+response, Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(getActivity(), "cart fetched this", Toast.LENGTH_SHORT).show();
                 Gson gson = new Gson();
                 cartDetails.clear();
-                ArrayList<JSONObject>jsonObjects= JsonParsing.parsejson(response);
+                ArrayList<JSONObject> jsonObjects = JsonParsing.parsejson(response);
 
-                for(JSONObject obj:jsonObjects){
+                for (JSONObject obj : jsonObjects) {
                     CartDetails object = gson.fromJson(String.valueOf(obj), CartDetails.class);
-                         cartDetails.add(object);
+                    cartDetails.add(object);
                 }
-if(cartDetails.size()>0) {
-    Cart_Recycler_View.setAdapter(new CartAdapter(getActivity(), cartDetails, go_to_cart));
-}
+                if (cartDetails.size() > 0) {
+                    Cart_Recycler_View.setAdapter(new CartAdapter(getActivity(), cartDetails, go_to_cart));
+                }
 
-    Toast.makeText(getActivity(), "nothing is there in cart", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "nothing is there in cart", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -169,35 +161,27 @@ if(cartDetails.size()>0) {
 
         }, new Response.ErrorListener() {
             public void onErrorResponse(VolleyError error) {
-              //  Toast.makeText(Mutual_details.this,"check internet connection"+error,Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "cart not fetched   "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(Mutual_details.this,"check internet connection"+error,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "cart not fetched   " + error.getMessage(), Toast.LENGTH_SHORT).show();
 
                 cartDetails.clear();
 
                 Cart_Recycler_View.setAdapter(new CartAdapter(getActivity(), cartDetails, go_to_cart));
 
 
-            Toast.makeText(getActivity(), "nothing is there in cart", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "nothing is there in cart", Toast.LENGTH_SHORT).show();
 
             }
 
-        }){
+        }) {
             @Override
             public HashMap<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
                 //  params.put("Content-Type", " text/javascript");
                 params.put("Content-Type", "application/json");
-
                 return params;
-
-
-
             }
-        }
-
-                ;
-
-
+        };
 // Add the request to the RequestQueue.
         queue.add(jsonRequest);
     }
@@ -235,10 +219,10 @@ if(cartDetails.size()>0) {
 
     @Override
     public void OnDeleteClicked(int position) {
-deletefromcart(cartDetails.get(position).getUser_id(),cartDetails.get(position).getMedicine_id());
+        deletefromcart(cartDetails.get(position).getUser_id(), cartDetails.get(position).getMedicine_id());
     }
-    public void deletefromcart(int user_id,int medicine_id){
 
+    public void deletefromcart(String user_id, int medicine_id) {
 
 
         Toast.makeText(getActivity(), "in addtocart", Toast.LENGTH_SHORT).show();
@@ -248,10 +232,8 @@ deletefromcart(cartDetails.get(position).getUser_id(),cartDetails.get(position).
         JSONObject data2 = new JSONObject();
 
 
-
-
         final JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.DELETE
-                , "http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/cart/delete-item-cart/"+user_id+"/"+medicine_id, data2,
+                , "http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/cart/delete-item-cart/" + user_id + "/" + medicine_id, data2,
                 new com.android.volley.Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -279,7 +261,6 @@ deletefromcart(cartDetails.get(position).getUser_id(),cartDetails.get(position).
                 return params;
 
 
-
             }
 
 
@@ -291,18 +272,15 @@ deletefromcart(cartDetails.get(position).getUser_id(),cartDetails.get(position).
 
     @Override
     public void OnIncreaseClicked(int position) {
-        if(cartDetails.get(position).getQuantity()<10){
-          //  cartDetails.get(position).setQuantity(cartDetails.get(position).getQuantity()+1);
-        increaseinserver(cartDetails.get(position).getUser_id(),cartDetails.get(position).getMedicine_id(),cartDetails.get(position).getQuantity()+1);
-        }
-        else{
+        if (cartDetails.get(position).getQuantity() < 10) {
+            //  cartDetails.get(position).setQuantity(cartDetails.get(position).getQuantity()+1);
+            increaseinserver(cartDetails.get(position).getUser_id(), cartDetails.get(position).getMedicine_id(), cartDetails.get(position).getQuantity() + 1);
+        } else {
             Toast.makeText(getActivity(), "you can not add more then 10", Toast.LENGTH_SHORT).show();
         }
     }
-    public void increaseinserver(int user_id,int medicine_id,int qt){
 
-
-
+    public void increaseinserver(String user_id, int medicine_id, int qt) {
 
 
         Toast.makeText(getActivity(), "in addtocart", Toast.LENGTH_SHORT).show();
@@ -311,15 +289,13 @@ deletefromcart(cartDetails.get(position).getUser_id(),cartDetails.get(position).
         // JSONObject urlf = new JSONObject(data);
         JSONObject data2 = new JSONObject();
 
-        try{
-            data2.put("user_id",user_id);
-            data2.put("medicine_id",medicine_id);
-            data2.put("quantity",qt);
+        try {
+            data2.put("user_id", user_id);
+            data2.put("medicine_id", medicine_id);
+            data2.put("quantity", qt);
 
 
-
-
-        }catch(Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -329,7 +305,7 @@ deletefromcart(cartDetails.get(position).getUser_id(),cartDetails.get(position).
                 new com.android.volley.Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                      //  Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
+                        //  Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
                         volly(go_to_cart);
                     }
 
@@ -353,7 +329,6 @@ deletefromcart(cartDetails.get(position).getUser_id(),cartDetails.get(position).
                 return params;
 
 
-
             }
 
 
@@ -362,81 +337,77 @@ deletefromcart(cartDetails.get(position).getUser_id(),cartDetails.get(position).
 
         queue.add(putRequest);
 
-        }
+    }
 
     @Override
     public void OnDecreaseClicked(int position) {
-        if(cartDetails.get(position).getQuantity()==1){
+        if (cartDetails.get(position).getQuantity() == 1) {
             Toast.makeText(getActivity(), "minimum 1 is required", Toast.LENGTH_SHORT).show();
-            return ;
+            return;
         }
-        if(cartDetails.get(position).getQuantity()>2){
-         //   cartDetails.get(position).setQuantity(cartDetails.get(position).getQuantity()-1);
-        decreaseQuantityfromServer(cartDetails.get(position).getUser_id(),cartDetails.get(position).getMedicine_id(),cartDetails.get(position).getQuantity()-1);
+        if (cartDetails.get(position).getQuantity() > 2) {
+            //   cartDetails.get(position).setQuantity(cartDetails.get(position).getQuantity()-1);
+            decreaseQuantityfromServer(cartDetails.get(position).getUser_id(), cartDetails.get(position).getMedicine_id(), cartDetails.get(position).getQuantity() - 1);
         }
 
     }
-public void decreaseQuantityfromServer(int user_id,int medicine_id,int qt){
+
+    public void decreaseQuantityfromServer(String user_id, int medicine_id, int qt) {
 
 
+        Toast.makeText(getActivity(), "in addtocart", Toast.LENGTH_SHORT).show();
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
 
-    Toast.makeText(getActivity(), "in addtocart", Toast.LENGTH_SHORT).show();
-    RequestQueue queue = Volley.newRequestQueue(getActivity());
+        // JSONObject urlf = new JSONObject(data);
+        JSONObject data2 = new JSONObject();
 
-    // JSONObject urlf = new JSONObject(data);
-    JSONObject data2 = new JSONObject();
-
-    try{
-        data2.put("user_id",user_id);
-        data2.put("medicine_id",medicine_id);
-        data2.put("quantity",qt);
-
+        try {
+            data2.put("user_id", user_id);
+            data2.put("medicine_id", medicine_id);
+            data2.put("quantity", qt);
 
 
+        } catch (Exception e) {
 
-    }catch(Exception e){
+        }
 
-    }
+        final JsonObjectRequest putRequest = new JsonObjectRequest(com.android.volley.Request.Method.POST
+                , "http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/cart/insert-medicine-cart", data2,
+                new com.android.volley.Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //  Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
+                        volly(go_to_cart);
+                    }
 
 
-    final JsonObjectRequest putRequest = new JsonObjectRequest(com.android.volley.Request.Method.POST
-            , "http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/cart/insert-medicine-cart", data2,
-            new com.android.volley.Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    //  Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
-                    volly(go_to_cart);
+                },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), "volly error   " + error, Toast.LENGTH_SHORT).show();
+
+                    }
                 }
+        ) {
+
+            @Override
+            public HashMap<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<>();
+                //  params.put("Content-Type", " text/javascript");
+                params.put("Content-Type", "application/json");
+
+                return params;
 
 
-            },
-            new com.android.volley.Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getActivity(), "volly error   " + error, Toast.LENGTH_SHORT).show();
-
-                }
             }
-    ) {
-
-        @Override
-        public HashMap<String, String> getHeaders() throws AuthFailureError {
-            HashMap<String, String> params = new HashMap<>();
-            //  params.put("Content-Type", " text/javascript");
-            params.put("Content-Type", "application/json");
-
-            return params;
 
 
-
-        }
-
-
-    };
+        };
 
 
-    queue.add(putRequest);
-}
+        queue.add(putRequest);
+    }
 
     /**
      * This interface must be implemented by activities that contain this

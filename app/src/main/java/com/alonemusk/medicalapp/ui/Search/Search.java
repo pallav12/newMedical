@@ -65,23 +65,10 @@ public class Search extends Fragment implements SearchAdapter.MedicineClicked {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.search_fragment, container, false);
-
-
         findViews(v);
-
-
         onClickListener();
-
-
-
-
         return v;
-
-
     }
-
-
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -90,7 +77,7 @@ public class Search extends Fragment implements SearchAdapter.MedicineClicked {
 
         OkHttpClient client = new OkHttpClient();
 
-        String url = "http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/fetch-medicine-and-id";
+        String url = "http://ec2-13-235-73-199.ap-south-1.compute.amazonaws.com:3000/fetch-medicine-and-id";
 
         Request request = new Request.Builder()
                 .url(url)
@@ -131,7 +118,7 @@ public class Search extends Fragment implements SearchAdapter.MedicineClicked {
 
             }
         });
-                      mViewModel.getAllnote().observe(this, new Observer<List<SearchMedicine>>() {
+                      mViewModel.getCurrentName().observe(this, new Observer<List<SearchMedicine>>() {
             @Override
             public void onChanged(List<SearchMedicine> notes) {
                 searchAdapter.setNotes(notes);

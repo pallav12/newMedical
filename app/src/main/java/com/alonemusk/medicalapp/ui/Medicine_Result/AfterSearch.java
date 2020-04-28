@@ -1,23 +1,8 @@
 package com.alonemusk.medicalapp.ui.Medicine_Result;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,10 +16,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import com.alonemusk.medicalapp.R;
 import com.alonemusk.medicalapp.classes.JsonParsing;
-import com.alonemusk.medicalapp.ui.Search.SearchAdapter;
-import com.alonemusk.medicalapp.ui.Search.SearchMedicine;
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
@@ -47,6 +36,12 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import static android.content.ContentValues.TAG;
 
@@ -61,7 +56,7 @@ public class AfterSearch extends Fragment implements AfterSearchAdapter.GoTOCart
     MedicineAttributes object;
     int user_id;
     TextView Price;
-    CardView cardViewtocart,go_to_cart_from_searchcard;
+    CardView cardViewtocart, go_to_cart_from_searchcard;
     Spinner spinner;
 
 
@@ -74,7 +69,6 @@ public class AfterSearch extends Fragment implements AfterSearchAdapter.GoTOCart
     public AfterSearch() {
         // Required empty public constructor
     }
-
 
 
     // TODO: Rename and change types and number of parameters
@@ -95,12 +89,12 @@ public class AfterSearch extends Fragment implements AfterSearchAdapter.GoTOCart
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-         medicine_id=getArguments().getInt("medicine_id");
-         user_id=getArguments().getInt("user_id");
-        Toast.makeText(getActivity(), ""+medicine_id+user_id, Toast.LENGTH_SHORT).show();
+        medicine_id = getArguments().getInt("medicine_id");
+        user_id = getArguments().getInt("user_id");
+        Toast.makeText(getActivity(), "" + medicine_id + user_id, Toast.LENGTH_SHORT).show();
 
 
-   }
+    }
 // <androidx.recyclerview.widget.RecyclerView
 //    android:id="@+id/recyclerView"
 //    android:layout_below="@+id/result"
@@ -114,26 +108,26 @@ public class AfterSearch extends Fragment implements AfterSearchAdapter.GoTOCart
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v=inflater.inflate(R.layout.fragment_after_search, container, false);
-        spinner=v.findViewById(R.id.quantity);
-        ArrayAdapter<CharSequence> arrayAdapter=ArrayAdapter.createFromResource(getActivity(),R.array.medicine_quantity,android.R.layout.simple_spinner_item);
+        View v = inflater.inflate(R.layout.fragment_after_search, container, false);
+        spinner = v.findViewById(R.id.quantity);
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.medicine_quantity, android.R.layout.simple_spinner_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
-Price=v.findViewById(R.id.price);
-        ImageView imageView=v.findViewById(R.id.image);
-        cardViewtocart=v.findViewById(R.id.go_to_cart_from_product);
-        go_to_cart_from_searchcard=v.findViewById(R.id.go_to_cart_from_search);
-go_to_cart_from_searchcard.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-     //   getActivity().onBackPressed();
-    }
-});
-        ImageView cartclicked=v.findViewById(R.id.clicked_on_cart);
-        Medicine_name_textview=v.findViewById(R.id.medicine_name_id);
-       relativeLayout=v.findViewById(R.id.medicine_details_layout);
-       addtocartbtn=v.findViewById(R.id.addtocartbtn);
-     //  spinner.setOnItemSelectedListener(this);
+        Price = v.findViewById(R.id.price);
+        ImageView imageView = v.findViewById(R.id.image);
+        cardViewtocart = v.findViewById(R.id.go_to_cart_from_product);
+        go_to_cart_from_searchcard = v.findViewById(R.id.go_to_cart_from_search);
+        go_to_cart_from_searchcard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //   getActivity().onBackPressed();
+            }
+        });
+        ImageView cartclicked = v.findViewById(R.id.clicked_on_cart);
+        Medicine_name_textview = v.findViewById(R.id.medicine_name_id);
+        relativeLayout = v.findViewById(R.id.medicine_details_layout);
+        addtocartbtn = v.findViewById(R.id.addtocartbtn);
+        //  spinner.setOnItemSelectedListener(this);
         addtocartbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,7 +167,6 @@ go_to_cart_from_searchcard.setOnClickListener(new View.OnClickListener() {
 //        recyclerView.setAdapter(new AfterSearchAdapter(str,getActivity(),this));
 
 
-
         return v;
     }
 
@@ -184,7 +177,7 @@ go_to_cart_from_searchcard.setOnClickListener(new View.OnClickListener() {
 
         OkHttpClient client = new OkHttpClient();
 
-        String url = "http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/fetch-medicine/"+medicine_id;
+        String url = "http://ec2-13-235-73-199.ap-south-1.compute.amazonaws.com:3000/fetch-medicine/" + medicine_id;
 
         Request request = new Request.Builder()
                 .url(url)
@@ -194,7 +187,7 @@ go_to_cart_from_searchcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onFailure(Call call, IOException e) {
                 // Toast.makeText(getActivity(), "failed", Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "in funtion "+e);
+                Log.d(TAG, "in funtion " + e);
                 e.printStackTrace();
 
             }
@@ -209,13 +202,13 @@ go_to_cart_from_searchcard.setOnClickListener(new View.OnClickListener() {
                         public void run() {
                             Gson gson = new Gson();
 
-                            ArrayList<JSONObject>jsonObjects= JsonParsing.parsejson(myResponse);
+                            ArrayList<JSONObject> jsonObjects = JsonParsing.parsejson(myResponse);
 
-                            for(JSONObject obj:jsonObjects){
-                                 object = gson.fromJson(String.valueOf(obj), MedicineAttributes.class);
+                            for (JSONObject obj : jsonObjects) {
+                                object = gson.fromJson(String.valueOf(obj), MedicineAttributes.class);
                                 Medicine_name_textview.setText(object.getMedicine_name());
 //Price.setText(object.getPrice()+" INR");
-                                    relativeLayout.setVisibility(View.VISIBLE);
+                                relativeLayout.setVisibility(View.VISIBLE);
                             }
                             Log.d(TAG, "in funtion ");
                         }
@@ -262,7 +255,7 @@ go_to_cart_from_searchcard.setOnClickListener(new View.OnClickListener() {
 //        switch (view.getId()){
 //            case R.id.quantity:
 //            {
-                String text=adapterView.getItemAtPosition(i).toString();
+        String text = adapterView.getItemAtPosition(i).toString();
 //                Price.setText(""+Integer.parseInt(text)*Integer.parseInt(object.getPrice()));
 //                Toast.makeText(getActivity(), "prive    "+object.getPrice(), Toast.LENGTH_SHORT).show();
 //            }
@@ -288,89 +281,65 @@ go_to_cart_from_searchcard.setOnClickListener(new View.OnClickListener() {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-    private void AddToCart(){
+
+    private void AddToCart() {
 
 
+        Toast.makeText(getActivity(), "in addtocart", Toast.LENGTH_SHORT).show();
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+
+        // JSONObject urlf = new JSONObject(data);
+        JSONObject data2 = new JSONObject();
+
+        try {
+            data2.put("user_id", "mahendra");
+            data2.put("medicine_id", object.getMedicine_id());
+            data2.put("quantity", Integer.parseInt(spinner.getSelectedItem().toString()));
 
 
-            Toast.makeText(getActivity(), "in addtocart", Toast.LENGTH_SHORT).show();
-            RequestQueue queue = Volley.newRequestQueue(getActivity());
-
-            // JSONObject urlf = new JSONObject(data);
-            JSONObject data2 = new JSONObject();
-
-            try{
-                data2.put("user_id",user_id);
-                data2.put("medicine_id",object.getMedicine_id());
-                data2.put("quantity",Integer.parseInt(spinner.getSelectedItem().toString()));
-
-
-
-
-            }catch(Exception e){
-
-            }
-
-
-            final JsonObjectRequest putRequest = new JsonObjectRequest(com.android.volley.Request.Method.POST
-                    , "http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/cart/insert-medicine-cart", data2,
-                    new com.android.volley.Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
-                        }
-
-
-                    },
-                    new com.android.volley.Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getActivity(), "volly error   " + error, Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-            ) {
-
-                @Override
-                public HashMap<String, String> getHeaders() throws AuthFailureError {
-                    HashMap<String, String> params = new HashMap<>();
-                    //  params.put("Content-Type", " text/javascript");
-                    params.put("Content-Type", "application/json");
-
-                    return params;
-
-
-
-                }
-
-
-            };
-
-
-            queue.add(putRequest);
+        } catch (Exception e) {
 
         }
 
 
+        final JsonObjectRequest putRequest = new JsonObjectRequest(com.android.volley.Request.Method.POST
+                , "http://ec2-13-235-73-199.ap-south-1.compute.amazonaws.com:3000/cart/insert-medicine-cart", data2,
+                new com.android.volley.Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getActivity(), "" + response, Toast.LENGTH_SHORT).show();
+                    }
 
 
+                },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity(), "volly error   " + error, Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+        ) {
+
+            @Override
+            public HashMap<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<>();
+                //  params.put("Content-Type", " text/javascript");
+                params.put("Content-Type", "application/json");
+
+                return params;
 
 
+            }
 
 
+        };
 
 
-
-
-
-
-
-
-
-
-
-
-
+        queue.add(putRequest);
 
     }
+
+
+}
 

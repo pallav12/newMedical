@@ -1,21 +1,20 @@
 package com.alonemusk.medicalapp.ui.Checkout;
 
-import androidx.cardview.widget.CardView;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.alonemusk.medicalapp.BaseAddress;
 import com.alonemusk.medicalapp.R;
@@ -30,7 +29,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 public class PaymentMethodFragment extends Fragment {
-CardView cod;
+    CardView cod;
     NavController navController;
     private PaymentMethodViewModel mViewModel;
 
@@ -41,21 +40,21 @@ CardView cod;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-       View v= inflater.inflate(R.layout.payment_method_fragment, container, false);
-       cod=v.findViewById(R.id.cod);
-      navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-       cod.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
+        View v = inflater.inflate(R.layout.payment_method_fragment, container, false);
+        cod = v.findViewById(R.id.cod);
+        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        cod.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 placeorder();
 
-           }
-       });
-       return v;
+            }
+        });
+        return v;
     }
-    private void placeorder(){
-String url=(new BaseAddress()).getBaseurl() +"/cart/submit-order";
 
+    private void placeorder() {
+        String url = (new BaseAddress()).getBaseurl() + "cart/submit-order";
 
 
         Toast.makeText(getActivity(), "in addtocart", Toast.LENGTH_SHORT).show();
@@ -64,14 +63,11 @@ String url=(new BaseAddress()).getBaseurl() +"/cart/submit-order";
         // JSONObject urlf = new JSONObject(data);
         JSONObject data2 = new JSONObject();
 
-        try{
-            data2.put("user_id",getArguments().getInt("user_id"));
-          data2.put("address_id",getArguments().getInt("address_id"));
-
-
-
-
-        }catch(Exception e){
+        try {
+            Log.d("hello", getArguments().getString("user_id"));
+            data2.put("user_id", getArguments().getString("user_id"));
+            data2.put("address_id", getArguments().getInt("address_id"));
+        } catch (Exception e) {
 
         }
 
@@ -81,12 +77,12 @@ String url=(new BaseAddress()).getBaseurl() +"/cart/submit-order";
                 new com.android.volley.Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "" + response, Toast.LENGTH_SHORT).show();
 
 
                         navController.navigate(R.id.action_paymentMethodFragment_to_orderPlacedFrag);
 
-                       // reload();
+                        // reload();
                     }
 
 
@@ -95,6 +91,7 @@ String url=(new BaseAddress()).getBaseurl() +"/cart/submit-order";
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getActivity(), "volly error   " + error, Toast.LENGTH_SHORT).show();
+                        Log.d("hello",error.toString());
 
                     }
                 }
@@ -105,11 +102,7 @@ String url=(new BaseAddress()).getBaseurl() +"/cart/submit-order";
                 HashMap<String, String> params = new HashMap<>();
                 //  params.put("Content-Type", " text/javascript");
                 params.put("Content-Type", "application/json");
-
                 return params;
-
-
-
             }
 
 

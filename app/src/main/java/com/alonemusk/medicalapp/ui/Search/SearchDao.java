@@ -22,8 +22,6 @@ public interface SearchDao {
     void delete(SearchMedicine searchMedicine);
     @Query("DELETE FROM note_table")
     void deleteAll();
-
-
-
-
+    @Query("SELECT * FROM note_table")
+    LiveData<List<SearchMedicine>> getAllNote();
 }
