@@ -76,8 +76,8 @@ public class EditForm extends Fragment {
                     noteViewmodel.delete(notes.get(getArguments().getInt("position")));
                 }
 
-                Log.d(TAG, "onClick: "+address+Landmark);
-                noteViewmodel.Insert(new Note(19,address,Landmark,City,state,"true"));
+               // Log.d(TAG, "onClick: "+address+Landmark);
+              //  noteViewmodel.Insert(new Note(19,address,Landmark,City,state,"true"));
                 final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
                 navController.navigate(R.id.action_navigation_edit_form_to_navigation_adress);

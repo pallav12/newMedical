@@ -66,7 +66,7 @@ public class SubmitPresDetailsFrag extends Fragment {
     ImageButton uploadimagebtn;
     Button submitorderbtn;
     ProgressBar uploadProgressBar;
-    ImageView imageView;
+    //ImageView imageView;
     ArrayList<Uri> images = new ArrayList<>();
     private Uri mImageUri;
     private StorageReference mStorageRef;
@@ -86,7 +86,7 @@ public class SubmitPresDetailsFrag extends Fragment {
         View root = inflater.inflate(R.layout.submit_pres_details_fragment, container, false);
         //  name=root.findViewById(R.id.editText_name);
         Button btn = root.findViewById(R.id.change_address_btn);
-        imageView=root.findViewById(R.id.upload_prescription);
+       // imageView=root.findViewById(R.id.upload_prescription);
         // textview_address_directorder = root.findViewById(R.id.textview_address_directorder);
         //directorderDescription_edittext = root.findViewById(R.id.directorderDescription_edittext);
         NoteViewmodel noteViewmodel = ViewModelProviders.of(this).get(NoteViewmodel.class);
@@ -310,7 +310,7 @@ public class SubmitPresDetailsFrag extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (SubmitPresDetailsViewModel.images.size() != 0) {
-            Picasso.with(getActivity()).load(SubmitPresDetailsViewModel.images.get(0)).into(imageView);
+        //    Picasso.with(getActivity()).load(SubmitPresDetailsViewModel.images.get(0)).into(imageView);
         }
 
     }
@@ -330,7 +330,7 @@ public class SubmitPresDetailsFrag extends Fragment {
             mImageUri = data.getData();
             images.add(mImageUri);
             SubmitPresDetailsViewModel.images = images;
-            Picasso.with(getActivity()).load(mImageUri).into(imageView);
+         //   Picasso.with(getActivity()).load(mImageUri).into(imageView);
         }
     }
 

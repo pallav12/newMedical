@@ -30,12 +30,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.OrderByPres.DirectOrderSuccess"></activity>
-        <activity android:name=".Testingimage"></activity>
+        <activity android:name=".ui.Login.OtpVerificationActivity"></activity>
+        <activity android:name=".ui.Login.LoginActivity" />
+        <activity android:name=".ui.Login.IntroductionActivity" />
+        <activity android:name=".ui.Login.FlashActivity" />
+        <activity android:name=".ui.OrderByPres.DirectOrderSuccess" />
+        <activity android:name=".Testingimage" />
         <activity android:name=".AfterSearch" />
         <activity
             android:name=".FirstActivity"
-            android:label="@string/title_activity_first"></activity>
+            android:label="@string/title_activity_first" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

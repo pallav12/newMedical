@@ -14,14 +14,14 @@ public class Note {
 
     @SerializedName("user_id")
 
-    private int user_id;
+    private String user_id;
     private String address;
 
     public void setAddress_id(int address_id) {
         this.address_id = address_id;
     }
 
-    public void setUser_id(Integer user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
@@ -63,7 +63,7 @@ public class Note {
                 '}';
     }
 
-    public Note(int user_id,
+    public Note(String user_id,
                 String address,
                 String landmark,
                 String city,
@@ -80,7 +80,7 @@ public class Note {
         return address_id;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 

@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.alonemusk.medicalapp.BaseAddress;
 import com.alonemusk.medicalapp.R;
 import com.alonemusk.medicalapp.classes.JsonParsing;
 import com.alonemusk.medicalapp.ui.Cart.CartAdapter;
@@ -104,7 +105,7 @@ FloatingActionButton floatingActionButton;
     }
     public void getAllorder(){
 
-            String url="http://ec2-13-235-73-199.ap-south-1.compute.amazonaws.com:3000/get-user-order-detail/"+10001;
+            String url=BaseAddress.getBaseurl()+"/get-user-order-detail/"+ BaseAddress.getUser_id();
 
 
             final RequestQueue queue = Volley.newRequestQueue(getActivity());

@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.alonemusk.medicalapp.BaseAddress;
 import com.alonemusk.medicalapp.R;
 import com.alonemusk.medicalapp.classes.JsonParsing;
 import com.alonemusk.medicalapp.ui.Cart.CartAdapter;
@@ -115,7 +116,7 @@ import static android.app.Activity.RESULT_OK;
 //                .post(requestBody)
 //
 //                .build();
-        String url="http://ec2-3-16-216-35.us-east-2.compute.amazonaws.com:3000/user/fetch-address-userid/"+10001;
+        String url= BaseAddress.getBaseurl()+ "/user/fetch-address-userid/"+BaseAddress.getUser_id();
 
 
         final RequestQueue queue = Volley.newRequestQueue(getActivity());
