@@ -1,21 +1,29 @@
 {
   "project_info": {
-    "project_number": "451515433957",
-    "firebase_url": "https://medical-app-701fb.firebaseio.com",
-    "project_id": "medical-app-701fb",
-    "storage_bucket": "medical-app-701fb.appspot.com"
+    "project_number": "913104457384",
+    "firebase_url": "https://medical-app-43b8b.firebaseio.com",
+    "project_id": "medical-app-43b8b",
+    "storage_bucket": "medical-app-43b8b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:451515433957:android:f7f5e4c82820539efc650c",
+        "mobilesdk_app_id": "1:913104457384:android:0cf828794302f02a873c9d",
         "android_client_info": {
           "package_name": "com.alonemusk.medicalapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "451515433957-nnosakjkqop7hgl281eeird8t0e3t4nl.apps.googleusercontent.com",
+          "client_id": "913104457384-me8telm3vam0rbt39l94ajq3kvad1kps.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alonemusk.medicalapp",
+            "certificate_hash": "fa3eadde8cef6b4abf04930592ad730097334000"
+          }
+        },
+        {
+          "client_id": "913104457384-ooqlfo1bld0uepp5nv6ihclemo0ch49a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.alonemusk.medicalapp",
@@ -23,20 +31,20 @@
           }
         },
         {
-          "client_id": "451515433957-nksp483ovl2tkjfa50mscutofrma7ee4.apps.googleusercontent.com",
+          "client_id": "913104457384-m1ll6ptr0251fkhkp2l9t44jjn3o5h2g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDn94eEv40SYRCVcJZUAvz85D5BR5rAVv4"
+          "current_key": "AIzaSyB7UQG_iE12r1rBxF7pWknXGUJnIN1lyZk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "451515433957-nksp483ovl2tkjfa50mscutofrma7ee4.apps.googleusercontent.com",
+              "client_id": "913104457384-m1ll6ptr0251fkhkp2l9t44jjn3o5h2g.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
