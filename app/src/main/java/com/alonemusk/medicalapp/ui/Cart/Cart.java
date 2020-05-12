@@ -61,15 +61,6 @@ public class Cart extends Fragment implements Go_TO_Cart {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Cart.
-     */
-    // TODO: Rename and change types and number of parameters
     public static Cart newInstance(String param1, String param2) {
         Cart fragment = new Cart();
         Bundle args = new Bundle();
@@ -92,7 +83,6 @@ public class Cart extends Fragment implements Go_TO_Cart {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
         final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         ImageView imageView = v.findViewById(R.id.image);
@@ -101,9 +91,7 @@ public class Cart extends Fragment implements Go_TO_Cart {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 navController.navigate(R.id.action_navigation_cart_to_navigation_after_search);
-
             }
         });
 

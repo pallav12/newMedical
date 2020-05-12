@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.alonemusk.medicalapp.MainActivity;
 import com.alonemusk.medicalapp.R;
+import com.alonemusk.medicalapp.ui.utils.General;
+import com.alonemusk.medicalapp.ui.utils.PrefManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,7 +29,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
+            General.Companion.toast("Authentication");
             startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
+        if(PrefManager.INSTANCE.getBoolean(R.string.first_time,true)){
+            startActivity(new Intent(this,FlashActivity.class));
             finish();
         }
         SendOtpViewModel sendOtpViewModel = ViewModelProviders.of(this).get(SendOtpViewModel.class);

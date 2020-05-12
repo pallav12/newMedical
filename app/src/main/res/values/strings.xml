@@ -10,6 +10,7 @@
     <string name="orders">Orders</string>
     <string name="Name">Name</string>
     <string name="download_bill">Download bill</string>
+    <string name="first_time">first_time</string>
 
     <string-array name="medicine_quantity">
 
