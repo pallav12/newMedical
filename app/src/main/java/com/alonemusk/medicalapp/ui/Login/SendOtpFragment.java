@@ -18,6 +18,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.alonemusk.medicalapp.R;
+import com.alonemusk.medicalapp.ui.utils.Constants;
+import com.alonemusk.medicalapp.ui.utils.PrefManager;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
@@ -53,6 +55,7 @@ public class SendOtpFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mViewModel.progress.postValue(true);
+                PrefManager.INSTANCE.putString(Constants.PHONE,"+91"+editText.getText().toString());
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
                         "+91"+editText.getText().toString(), // Phone number to verify
                         60, // Timeout duration

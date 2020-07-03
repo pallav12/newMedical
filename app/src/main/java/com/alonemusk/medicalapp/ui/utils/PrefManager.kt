@@ -16,4 +16,16 @@ object PrefManager {
     fun getBoolean(preferenceKey: Int, defaultValue: Boolean): Boolean {
         return preference.getBoolean(context.getString(preferenceKey), defaultValue)
     }
+
+    fun putString(preferenceKey: String, preferenceValue: String) {
+        preference.edit().putString(preferenceKey, preferenceValue).apply()
+    }
+
+    fun getString(preferenceKey: String, defaultValue: String): String? {
+        return preference.getString(preferenceKey, defaultValue)
+    }
+
+    fun getPhone(): String {
+        return getString(Constants.PHONE, "not_defined") as String
+    }
 }

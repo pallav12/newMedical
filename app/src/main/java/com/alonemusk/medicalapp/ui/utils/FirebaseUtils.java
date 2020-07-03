@@ -3,10 +3,11 @@ package com.alonemusk.medicalapp.ui.utils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
+import com.alonemusk.medicalapp.ui.models.CallRequest;
 import com.alonemusk.medicalapp.ui.models.Doctor;
-import com.google.firebase.database.ChildEventListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -30,6 +31,15 @@ public class FirebaseUtils {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+    }
+
+    public static void requestPhone(String phone, String message, final listener<String>listener) {
+        FirebaseDatabase.getInstance().getReference("calls").child("requests").push().setValue(new CallRequest(phone, message, General.Companion.getTime())).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                listener.onSuccess("Request successfully send");
             }
         });
     }
