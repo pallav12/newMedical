@@ -11,6 +11,8 @@
     <string name="Name">Name</string>
     <string name="download_bill">Download bill</string>
     <string name="first_time">first_time</string>
+    <string name="call_now">Call now</string>
+    <string name="request_call">Request call</string>
 
     <string-array name="medicine_quantity">
 

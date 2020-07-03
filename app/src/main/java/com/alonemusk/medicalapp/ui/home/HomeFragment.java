@@ -1,10 +1,12 @@
 package com.alonemusk.medicalapp.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -24,6 +26,7 @@ import com.alonemusk.medicalapp.FirstActivity;
 import com.alonemusk.medicalapp.R;
 import com.alonemusk.medicalapp.ui.EnterAdress.ItemFragment;
 import com.alonemusk.medicalapp.ui.EnterAdress.dummy.DummyContent;
+import com.alonemusk.medicalapp.ui.call.OrderByCallActivity;
 
 import org.w3c.dom.Text;
 
@@ -41,6 +44,13 @@ TextView pincode;
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         SearchView searchView=root.findViewById(R.id.search);
        addtocart=root.findViewById(R.id.gotocarthomeicon);
+        RelativeLayout rv=root.findViewById(R.id.call);
+        rv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireActivity(),OrderByCallActivity.class));
+            }
+        });
         cardView1=root.findViewById(R.id.home_card1);
         cardView2=root.findViewById(R.id.home_card2);
         cardView3=root.findViewById(R.id.home_card3);
