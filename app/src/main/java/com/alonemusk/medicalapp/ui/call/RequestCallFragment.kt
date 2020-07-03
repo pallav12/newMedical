@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.lifecycle.ViewModelProviders
 
 import com.alonemusk.medicalapp.R
 import com.alonemusk.medicalapp.ui.utils.FirebaseUtils
@@ -21,6 +22,7 @@ class RequestCallFragment : Fragment() {
     private lateinit var send:Button
     private lateinit var message:EditText
     private lateinit var phone:EditText
+    private lateinit var viewModel: CallNowViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +37,11 @@ class RequestCallFragment : Fragment() {
         phone=v.findViewById(R.id.et_phone)
         phone.setText(PrefManager.getPhone())
         send.setOnClickListener {
+            viewModel.progress.postValue(true)
             FirebaseUtils.requestPhone(phone.text.toString(), message.text.toString(),object :FirebaseUtils.listener<String>{
                 override fun onSuccess(it: String) {
                     General.toast(it)
+                    viewModel.progress.postValue(false)
                     activity!!.finish()
                 }
 
@@ -48,6 +52,11 @@ class RequestCallFragment : Fragment() {
             })
         }
         return v
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel=ViewModelProviders.of(requireActivity()).get(CallNowViewModel::class.java)
     }
 
     companion object {

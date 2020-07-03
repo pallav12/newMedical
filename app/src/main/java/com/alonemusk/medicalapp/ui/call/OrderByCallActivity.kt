@@ -14,10 +14,10 @@ class OrderByCallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_by_call)
         progress=findViewById(R.id.progress)
-        supportFragmentManager.beginTransaction().replace(R.id.container, OrderByCallFragment()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, OrderByCallFragment()).commit()
         val viewModel = ViewModelProviders.of(this).get(CallNowViewModel::class.java)
         viewModel.fragmentTransaction.observe(this, Observer {
-            supportFragmentManager.beginTransaction().replace(R.id.container, it).commit()
+            supportFragmentManager.beginTransaction().addToBackStack("yo").add(R.id.container, it).commit()
         })
         viewModel.progress.observe(this, Observer {
             if(it){
@@ -27,5 +27,13 @@ class OrderByCallActivity : AppCompatActivity() {
                 progress.visibility= View.GONE
             }
         })
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }
