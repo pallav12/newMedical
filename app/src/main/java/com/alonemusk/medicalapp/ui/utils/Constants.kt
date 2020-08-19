@@ -1,7 +1,8 @@
 package com.alonemusk.medicalapp.ui.utils
 
 object Constants {
-    const val base_url="http://ec2-13-235-73-199.ap-south-1.compute.amazonaws.com:3000/"
-    const val base_url_cart= "$base_url/cart"
+    const val USER_ID="user_id"
     const val PHONE="phone"
+    const val FIRST_TIME="first_time"
+    const val PREF_SUBMITTED="pref_submitted"
 }

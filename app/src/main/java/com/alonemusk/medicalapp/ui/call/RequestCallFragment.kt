@@ -1,7 +1,6 @@
 package com.alonemusk.medicalapp.ui.call
 
 import android.os.Bundle
-import android.os.Message
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 
 import com.alonemusk.medicalapp.R
 import com.alonemusk.medicalapp.ui.utils.FirebaseUtils
-import com.alonemusk.medicalapp.ui.utils.General
+import com.alonemusk.medicalapp.ui.utils.Utils
 import com.alonemusk.medicalapp.ui.utils.PrefManager
 import com.google.firebase.database.DatabaseError
 
@@ -40,7 +39,7 @@ class RequestCallFragment : Fragment() {
             viewModel.progress.postValue(true)
             FirebaseUtils.requestPhone(phone.text.toString(), message.text.toString(),object :FirebaseUtils.listener<String>{
                 override fun onSuccess(it: String) {
-                    General.toast(it)
+                    Utils.toast(it)
                     viewModel.progress.postValue(false)
                     activity!!.finish()
                 }

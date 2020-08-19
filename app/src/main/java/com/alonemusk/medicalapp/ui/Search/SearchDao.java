@@ -20,8 +20,10 @@ public interface SearchDao {
     void update(SearchMedicine searchMedicine);
     @Delete
     void delete(SearchMedicine searchMedicine);
-    @Query("DELETE FROM note_table")
+    @Query("DELETE FROM medicine_table")
     void deleteAll();
-    @Query("SELECT * FROM note_table")
+    @Query("SELECT * FROM medicine_table")
     LiveData<List<SearchMedicine>> getAllNote();
+    @Query("SELECT * FROM medicine_table WHERE name LIKE :name")
+    List<SearchMedicine> search(String name);
 }

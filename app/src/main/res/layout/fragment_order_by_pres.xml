@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <View
+        android:id="@+id/upload_prescription"
+        android:layout_width="283dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="64dp"
+        android:background="#EEC213"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ImageView
+        android:id="@+id/presImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/address"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-16dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="UPLOAD PRESCRIPTION"
+        android:textColor="#707070"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/upload_prescription"
+        app:layout_constraintEnd_toEndOf="@+id/upload_prescription"
+        app:layout_constraintStart_toStartOf="@+id/upload_prescription" />
+
+    <Button
+        android:id="@+id/change_address_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button_background"
+        android:clickable="true"
+        android:fontFamily="sans-serif-black"
+        android:paddingLeft="32dp"
+        android:paddingTop="6dp"
+        android:paddingRight="32dp"
+        android:paddingBottom="6dp"
+        android:text="Change Address"
+        android:textColor="#707070"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="103dp"
+        android:layout_marginBottom="17dp"
+        android:clickable="true"
+        android:ems="10"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        android:text="C317- aryabatta sdbvhibadvbdbvabvoabvjbvjbav "
+        android:textColor="#707070"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/change_address_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upload_prescription" />
+
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="0dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="27dp"
+        android:background="@drawable/border"
+        android:clickable="true"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Add Descriptions"
+        android:inputType="textMultiLine"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/submit_order"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_address_btn" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="108dp"
+        android:background="#707070"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+    <Button
+        android:id="@+id/submit_order"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="9dp"
+        android:background="@drawable/button_background"
+        android:clickable="true"
+        android:fontFamily="sans-serif-black"
+        android:text="Submit Order"
+        android:textColor="#707070"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.611" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

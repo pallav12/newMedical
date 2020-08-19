@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -32,7 +32,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.call.OrderByCallActivity"></activity>
+        <activity android:name=".ui.Cart.Cart"></activity>
+        <activity android:name=".ui.MyOrders.MyOrders" />
+        <activity android:name=".ui.new_home.DetailedMedicine" />
+
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".SearchableActivity" />
+
+        <activity android:name=".ui.new_home.NewHomeActivity">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".ui.new_home.SearchableActivity" />
+        </activity>
+        <activity android:name=".ui.OrderByPres.OrderByPresActivity" />
+        <activity android:name=".ui.call.OrderByCallActivity" />
         <activity android:name=".ui.Login.OtpVerificationActivity" />
         <activity android:name=".ui.Login.LoginActivity">
             <intent-filter>
@@ -45,13 +59,12 @@
         <activity
             android:name=".ui.Login.FlashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ui.OrderByPres.DirectOrderSuccess" />
         <activity android:name=".Testingimage" />
         <activity android:name=".AfterSearch" />
         <activity
             android:name=".FirstActivity"
             android:label="@string/title_activity_first" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

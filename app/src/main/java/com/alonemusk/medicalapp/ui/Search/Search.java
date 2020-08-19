@@ -175,7 +175,6 @@ public class Search extends Fragment implements SearchAdapter.MedicineClicked {
     public void medicineClicked(int position) {
         final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         Bundle bundle=new Bundle();
-        bundle.putInt("medicine_id",searchMedicines.get(position).getMedicine_id());
         bundle.putInt("user_id",10001);
         navController.navigate(R.id.action_navigation_search_to_navigation_after_search,bundle);
 

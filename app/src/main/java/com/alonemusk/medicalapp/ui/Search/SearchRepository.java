@@ -3,9 +3,14 @@ package com.alonemusk.medicalapp.ui.Search;
 import android.app.Application;
 import android.os.AsyncTask;
 
+import androidx.annotation.WorkerThread;
 import androidx.lifecycle.LiveData;
 
+import com.alonemusk.medicalapp.ui.utils.Utils;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 public class SearchRepository {
@@ -18,7 +23,16 @@ public class SearchRepository {
         allnote=noteDao.getAllNote();
         // allnote=noteDao.getAllnodes();
     }
-
+    public List<SearchMedicine> search(String str) {
+        try {
+            return new GetSearch(noteDao).execute(str).get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<SearchMedicine>();
+    }
     public void insert(SearchMedicine note) {
         new InsertNoteAsyncTask(noteDao).execute(note);
 
@@ -100,16 +114,28 @@ public class SearchRepository {
             return null;
         }
     }
-    public static class GetAllNoteAsyncTask extends AsyncTask<Void, Void, Void> {
+    public static class GetAllNoteAsyncTask extends AsyncTask<String, String, String> {
         private SearchDao noteDao;
         private GetAllNoteAsyncTask(SearchDao noteDao) {
             this.noteDao = noteDao;
         }
 
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected String doInBackground(String... voids) {
             noteDao.getAllNote();
             return null;
+        }
+    }
+    public static class GetSearch extends AsyncTask<String, Void, List<SearchMedicine>> {
+        private SearchDao noteDao;
+        private GetSearch(SearchDao noteDao) {
+            this.noteDao = noteDao;
+        }
+
+        @Override
+        protected List<SearchMedicine> doInBackground(String... voids) {
+           return noteDao.search(voids[0]+"%");
+
         }
     }
 }

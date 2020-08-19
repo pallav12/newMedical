@@ -25,10 +25,8 @@ import android.widget.Toast;
 import com.alonemusk.medicalapp.BaseAddress;
 import com.alonemusk.medicalapp.R;
 import com.alonemusk.medicalapp.classes.JsonParsing;
-import com.alonemusk.medicalapp.ui.Cart.CartAdapter;
-import com.alonemusk.medicalapp.ui.Cart.CartDetails;
-import com.alonemusk.medicalapp.ui.Checkout.Confirm_order_fregment;
-import com.alonemusk.medicalapp.ui.EnterAdress.dummy.DummyContent;
+
+
 import com.alonemusk.medicalapp.ui.EnterAdress.dummy.DummyContent.DummyItem;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -238,7 +236,6 @@ import static android.app.Activity.RESULT_OK;
         public void addressSelected(int address_id) {
             Toast.makeText(getActivity(), "clicked this", Toast.LENGTH_SHORT).show();
 
-            Confirm_order_fregment.selected_address=address_id;
             getActivity().onBackPressed();
         }
 

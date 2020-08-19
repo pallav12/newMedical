@@ -6,12 +6,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.alonemusk.medicalapp.MainActivity;
 import com.alonemusk.medicalapp.R;
-import com.alonemusk.medicalapp.ui.utils.General;
+import com.alonemusk.medicalapp.ui.utils.Constants;
+import com.alonemusk.medicalapp.ui.utils.Utils;
 import com.alonemusk.medicalapp.ui.utils.PrefManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,11 +31,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
-            General.Companion.toast("Authentication");
+            Utils.Companion.toast("Authentication");
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
-        if(PrefManager.INSTANCE.getBoolean(R.string.first_time,true)){
+        if(PrefManager.INSTANCE.getBoolean(Constants.FIRST_TIME,true)){
             startActivity(new Intent(this,FlashActivity.class));
             finish();
         }
@@ -62,7 +64,8 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Verification Automatically completed", Toast.LENGTH_SHORT).show();
+                            Utils.Companion.toast(mAuth.getUid());
+                            PrefManager.INSTANCE.putString(Constants.USER_ID,mAuth.getUid());
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         } else {

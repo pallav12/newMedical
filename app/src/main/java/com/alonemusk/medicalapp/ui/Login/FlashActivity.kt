@@ -6,13 +6,14 @@ import android.os.PersistableBundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.alonemusk.medicalapp.R
+import com.alonemusk.medicalapp.ui.utils.Constants
 import com.alonemusk.medicalapp.ui.utils.PrefManager
 
 class FlashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flash)
-        PrefManager.putBoolean(R.string.first_time,false)
+        PrefManager.putBoolean(Constants.FIRST_TIME,false)
         findViewById<Button>(R.id.login).setOnClickListener {
             startActivity(Intent(this,LoginActivity::class.java))
             finish()

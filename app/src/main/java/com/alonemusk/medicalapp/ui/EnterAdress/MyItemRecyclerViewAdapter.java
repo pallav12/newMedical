@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alonemusk.medicalapp.R;
-import com.alonemusk.medicalapp.ui.Checkout.Confirm_order_fregment;
 
 import java.util.ArrayList;
 import java.util.List;

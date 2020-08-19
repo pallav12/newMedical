@@ -4,71 +4,6 @@
     android:layout_height="match_parent"
     xmlns:card="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-<RelativeLayout
-    android:id="@+id/relative"
-    android:layout_marginTop="8dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/cart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/deliverto"
-                android:layout_toRightOf="@id/pincode"
-                android:src="@drawable/ic_keyboard_arrow_down_black_24dp"></ImageView>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:id="@+id/gotocarthomeicon"
-                android:layout_centerInParent="true"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/ic_shopping_cart_black_24dp"></ImageView>
-
-            <TextView
-                android:id="@+id/deliverto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Deliver to"
-                android:textSize="12dp"></TextView>
-
-            <TextView
-                android:id="@+id/pincode"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/deliverto"
-                android:text="221105 varanasi"
-
-                android:textSize="15dp"></TextView>
-</RelativeLayout>
-
-
-            <androidx.appcompat.widget.SearchView
-                android:background="@drawable/circle"
-                android:transitionName="example_transition"
-                android:layout_marginRight="8dp"
-                android:clickable="false"
-                android:id="@+id/search"
-                android:autofillHints="Search for Medicines"
-                android:layout_marginBottom="8dp"
-                android:layout_below="@+id/relative"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"></androidx.appcompat.widget.SearchView>
-
-        </RelativeLayout>
-
-    </androidx.appcompat.widget.Toolbar>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -226,27 +161,29 @@ android:id="@+id/home_card3"
                 android:layout_weight="1"
 
                 card:cardCornerRadius="55dp">
+
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:id="@+id/adpres"
+                    android:layout_width="wrap_content"
+                    android:layout_height="97dp">
 
                     <ImageView
                         android:id="@+id/imageeeee"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="30dp"
-
                         android:layout_centerHorizontal="true"
+
+                        android:layout_marginTop="30dp"
                         android:src="@drawable/ic_local_offer_black_24dp"></ImageView>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:maxLines="2"
-                        android:textColor="#000"
+                        android:layout_below="@+id/imageeeee"
                         android:layout_centerHorizontal="true"
-                        android:text="Offers"
-                        android:layout_below="@+id/imageeeee"></TextView>
+                        android:maxLines="2"
+                        android:text="Add prescription"
+                        android:textColor="#000"></TextView>
                 </RelativeLayout>
 
 
@@ -272,7 +209,7 @@ android:id="@+id/home_card3"
             android:layout_width="match_parent"
             card:cardCornerRadius="8dp"
             android:layout_height="59dp"
-android:id="@+id/myorder"
+            android:id="@+id/myorder"
             android:layout_margin="8dp"
 
             >

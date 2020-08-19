@@ -1,34 +1,28 @@
 package com.alonemusk.medicalapp.ui.Search;
 
 import android.app.Application;
-import android.util.Log;
-
-import com.alonemusk.medicalapp.MainActivity;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+
+import com.alonemusk.medicalapp.ui.utils.Utils;
+
+import java.util.List;
+
+import okhttp3.internal.Util;
 
 public class SearchViewModel extends AndroidViewModel {
 
     private LiveData<List<SearchMedicine>> currentName;
     private SearchRepository repository;
-
+    public MutableLiveData<List<SearchMedicine>> search;
     public SearchViewModel(@NonNull Application application) {
         super(application);
         repository=new SearchRepository(application);
         currentName=repository.getAllnote();
+        search = new MutableLiveData<>();
 
     }
 
@@ -42,6 +36,10 @@ public class SearchViewModel extends AndroidViewModel {
     public void Insert(SearchMedicine note){
         repository.insert(note);
     }
+
+    public List<SearchMedicine> search(String str) {
+        return repository.search(str);
+    }
     public void Update(SearchMedicine note){
         repository.update(note);
     }
@@ -53,6 +51,10 @@ public class SearchViewModel extends AndroidViewModel {
     }
     public LiveData<List<SearchMedicine>> getAllnote(){
         return currentName;
+    }
+
+    public void search(List<SearchMedicine> medicines) {
+        search.postValue(medicines);
     }
 
     }

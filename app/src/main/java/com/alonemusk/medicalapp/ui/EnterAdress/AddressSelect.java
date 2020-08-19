@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.alonemusk.medicalapp.R;
-import com.alonemusk.medicalapp.ui.Checkout.Confirm_order_fregment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +26,6 @@ Button Selectaddresbtn;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Confirm_order_fregment.selected_address=110;
     }
 
     @Override

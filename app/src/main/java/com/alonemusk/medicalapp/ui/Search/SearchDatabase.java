@@ -10,7 +10,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {SearchMedicine.class},version = 5,exportSchema = false)
+@Database(entities = {SearchMedicine.class},version = 10,exportSchema = false)
 
 public abstract class SearchDatabase extends RoomDatabase {
     private static SearchDatabase instance;
