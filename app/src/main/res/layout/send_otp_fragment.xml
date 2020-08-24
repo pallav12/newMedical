@@ -2,9 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Theme.AppCompat.Light.NoActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/Theme.AppCompat.Light.NoActionBar"
     tools:context=".ui.Login.SendOtpFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,49 +14,64 @@
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="240dp"
             android:background="@drawable/bottom_rounded"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="42dp"
-            android:background="@drawable/rounded_border_yellow"
-            android:inputType="phone"
-            android:paddingLeft="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.419"
-            tools:layout_editor_absoluteX="41dp" />
+            android:transitionName="image_background"/>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:src="@drawable/oxy_flash"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            android:transitionName="image"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editText_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            app:layout_constraintBottom_toTopOf="@id/sendOtp"
+            app:layout_constraintTop_toBottomOf="@id/imageView2"
+            tools:layout_editor_absoluteX="41dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="phone"
+                android:drawableStart="@drawable/ic_call_black_24dp"
+                android:drawablePadding="4dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:visibility="invisible"
             android:layout_width="32dp"
             android:layout_height="32dp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/sendOtp"
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="42dp"
-            android:layout_marginStart="42dp"
-            android:layout_marginTop="36dp"
-            android:background="@drawable/rounded"
+            android:layout_marginTop="48dp"
             android:text="Proceed"
-            app:layout_constraintEnd_toEndOf="@id/editText"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="@id/editText"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintEnd_toEndOf="@id/editText_layout"
+            app:layout_constraintStart_toStartOf="@id/editText_layout"
+            app:layout_constraintTop_toBottomOf="@+id/editText_layout"
+            android:transitionName="login"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -67,8 +82,7 @@
             android:textColor="#000"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/editText"
-            app:layout_constraintHorizontal_bias="0.506"
-            app:layout_constraintStart_toStartOf="@+id/editText" />
+            app:layout_constraintEnd_toEndOf="@+id/editText_layout"
+            app:layout_constraintStart_toStartOf="@+id/editText_layout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

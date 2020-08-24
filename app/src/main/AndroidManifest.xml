@@ -47,8 +47,10 @@
         </activity>
         <activity android:name=".ui.OrderByPres.OrderByPresActivity" />
         <activity android:name=".ui.call.OrderByCallActivity" />
-        <activity android:name=".ui.Login.OtpVerificationActivity" />
-        <activity android:name=".ui.Login.LoginActivity">
+        <activity android:name=".ui.Login.OtpVerificationActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ui.Login.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,7 +60,7 @@
         <activity android:name=".ui.Login.IntroductionActivity" />
         <activity
             android:name=".ui.Login.FlashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Testingimage" />
         <activity android:name=".AfterSearch" />
         <activity

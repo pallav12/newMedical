@@ -17,6 +17,7 @@ import com.alonemusk.medicalapp.ui.utils.Utils;
 import com.alonemusk.medicalapp.ui.utils.PrefManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -29,8 +30,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getWindow().setEnterTransition(null);
         mAuth = FirebaseAuth.getInstance();
-        if (mAuth.getCurrentUser() != null) {
+//        if (mAuth.getCurrentUser() != null) {
+        if(mAuth.getCurrentUser() == null){
             Utils.Companion.toast("Authentication");
             startActivity(new Intent(this, MainActivity.class));
             finish();
@@ -56,6 +59,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         getSupportFragmentManager().beginTransaction().add(R.id.container, new SendOtpFragment()).commit();
+    }
+
+    @Override
+    public void finishAfterTransition() {
+        super.finish();
     }
 
     private void signInWithPhoneCredential(PhoneAuthCredential credential) {
