@@ -13,39 +13,55 @@
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="240dp"
             android:background="@drawable/bottom_rounded"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/code"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="42dp"
-            android:background="@drawable/rounded_border_yellow"
-            android:paddingLeft="24dp"
-            android:inputType="phone"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.43"
-            tools:layout_editor_absoluteX="41dp" />
+            android:transitionName="image_background"/>
 
-        <Button
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:src="@drawable/oxy_flash"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            android:transitionName="image"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/code_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            app:layout_constraintBottom_toTopOf="@id/confirm"
+            app:layout_constraintTop_toBottomOf="@id/imageView2"
+            tools:layout_editor_absoluteX="41dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="phone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/confirm"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="42dp"
-            android:layout_marginStart="42dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="48dp"
             android:background="@drawable/rounded"
             android:text="Confirm"
-            app:layout_constraintEnd_toEndOf="@id/code"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="@id/code"
-            app:layout_constraintTop_toBottomOf="@+id/code" />
+            app:layout_constraintEnd_toEndOf="@id/code_layout"
+            app:layout_constraintStart_toStartOf="@id/code_layout"
+            app:layout_constraintTop_toBottomOf="@+id/code_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

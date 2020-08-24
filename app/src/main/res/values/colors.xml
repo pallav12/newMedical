@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#EEC213</color>
-    <color name="colorPrimaryDark">#B19111</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#00BCD4</color>
+<!--    <color name="colorPrimaryDark">#B19111</color>-->
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <!--    <color name="colorAccent">#D81B60</color>-->
+    <color name="colorAccent">#FF3D00</color>
     <color name="colorgreen">#5BF807</color>
     <color name="stepview_line_done">@android:color/white</color>
     <color name="stepview_line_next">#26ffffff</color>

@@ -1,12 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="actionBarItemBackground">@android:color/white</item>
+        <item name="actionBarTheme">@style/AppTheme.WhiteActionBar</item>
     </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.WhiteActionBar">
+        <item name="colorPrimary">@android:color/white</item>
+    </style>
+
     <style name="StepView">
         <item name="sv_selectedCircleColor">@color/stepview_circle_selected</item>
         <item name="sv_selectedCircleRadius">14dp</item>
@@ -27,4 +42,9 @@
         <item name="sv_textSize">14sp</item>
         <item name="sv_animationType">Line</item>
     </style>
+
+<!--    <style name="App.Widget.MaterialComponents.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
+<!--        <item name="boxStrokeColor">@color/colorPrimary</item>-->
+
+<!--    </style>-->
 </resources>

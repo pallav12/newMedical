@@ -6,15 +6,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.alonemusk.medicalapp.MainActivity;
 import com.alonemusk.medicalapp.R;
 import com.alonemusk.medicalapp.ui.utils.Constants;
-import com.alonemusk.medicalapp.ui.utils.Utils;
 import com.alonemusk.medicalapp.ui.utils.PrefManager;
+import com.alonemusk.medicalapp.ui.utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -29,14 +28,16 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getWindow().setEnterTransition(null);
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
+//        if(mAuth.getCurrentUser() == null){
             Utils.Companion.toast("Authentication");
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
-        if(PrefManager.INSTANCE.getBoolean(Constants.FIRST_TIME,true)){
-            startActivity(new Intent(this,FlashActivity.class));
+        if (PrefManager.INSTANCE.getBoolean(Constants.FIRST_TIME, true)) {
+            startActivity(new Intent(this, FlashActivity.class));
             finish();
         }
         SendOtpViewModel sendOtpViewModel = ViewModelProviders.of(this).get(SendOtpViewModel.class);
@@ -56,6 +57,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         getSupportFragmentManager().beginTransaction().add(R.id.container, new SendOtpFragment()).commit();
+    }
+
+    @Override
+    public void finishAfterTransition() {
+        super.finish();
     }
 
     private void signInWithPhoneCredential(PhoneAuthCredential credential) {
